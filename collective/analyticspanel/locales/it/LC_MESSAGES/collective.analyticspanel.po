@@ -1,0 +1,88 @@
+# Italian translation for collective.analyticspanel
+# Luca Fabbri <keul@redturtle.it>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-07-03 13:03+0000\n"
+"PO-Revision-Date: 2012-07-03 12:59 +0000\n"
+"Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.analyticspanel\n"
+
+#: ../browser/controlpanel.py:19
+#: ../profiles/default/controlpanel.xml
+msgid "Analytics settings"
+msgstr "Impostazioni delle statistiche"
+
+#: ../browser/controlpanel.py:34
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../browser/controlpanel.py:30
+msgid "Changes saved"
+msgstr "Modifiche salvate"
+
+#: ../pair_fields.py:23
+msgid "Code to include"
+msgstr "Codice da includere"
+
+#: ../browser/controlpanel.py:36
+msgid "Edit cancelled"
+msgstr "Modifiche annullata"
+
+#: ../pair_fields.py:22
+msgid "Error message"
+msgstr "Messaggio di errore"
+
+#: ../interfaces.py:36
+msgid "Error message related snippet"
+msgstr "Codice relativo al messaggio di errore"
+
+#: ../interfaces.py:43
+msgid "JavaScript to be included inside specific site's paths"
+msgstr "JavaScript da includere in percorsi del sito"
+
+#: ../interfaces.py:31
+msgid "JavaScript to be included when an error message is get"
+msgstr "JavaScript da includere quando si ottengono messaggi di errore"
+
+#: ../browser/controlpanel.py:23
+msgid "Save"
+msgstr "Salva"
+
+#: ../pair_fields.py:29
+msgid "Site path"
+msgstr "Percorso del sito"
+
+#: ../interfaces.py:49
+msgid "Site path related snippet"
+msgstr "Codice relativo a percorsi del sito"
+
+#. Default: "Manage JavaScript code and analytics snippets inclusion for the site"
+#: ../browser/controlpanel.py:20
+msgid "help_analytics_settings_editform"
+msgstr "Gestisce l'inclusione di di codice JavaScript e analytics per questo sito"
+
+#. Default: "Replace default code included when an error message returned is one of the following values.\nFor example: use \"NotFound\" for change JavaScript included inside NotFound page."
+#: ../interfaces.py:32
+msgid "help_error_specific_code"
+msgstr ""
+"Rimpiazza il codice predefinito incluso quando viene ritornato un messaggio di errore tra i seguenti.\n"
+"Per esempio: usa \"NotFound\" per cambiare il codice JavaScript incluso nella pagina di NotFound."
+
+#. Default: "Put there an absolute site path, and the statistics code you want to use there instead of the default ones.\nThe most specific path will be used.\nExample: /folder/subfolder"
+#: ../interfaces.py:44
+msgid "help_path_specific_code"
+msgstr ""
+"Inserisci qui un percorso assoluto del sito e il codice delle statistiche che vuoi includere al suo interno invece di quello predefinito.\n"
+"Verrà usato il percorso più specifico.\n"
+"Esempio: /cartella/sottocartella"
+
+

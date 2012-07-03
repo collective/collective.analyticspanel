@@ -1,0 +1,4 @@
+<layers>
+    <layer name="collective.analyticspanel"
+           interface="collective.analyticspanel.interfaces.IAnalyticsPanelLayer" />
+</layers>

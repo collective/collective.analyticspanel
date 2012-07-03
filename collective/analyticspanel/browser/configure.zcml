@@ -1,0 +1,37 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.analyticspanel">
+
+    <browser:resourceDirectory
+        name="collective.analyticspanel.images"
+        directory="images"
+        />
+
+    <!-- Control panel -->
+    <browser:page
+        name="analytics-settings"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.AnalyticsSettingsControlPanel"
+        permission="collective.analyticspanel.ManageAnalyticsSettings"
+        layer="..interfaces.IAnalyticsPanelLayer"
+        />
+
+    <browser:viewlet  
+        name="plone.analytics"
+        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+        class=".viewlet.AnalyticsViewlet"
+        permission="zope2.View"
+        layer="..interfaces.IAnalyticsPanelLayer"
+        />
+
+   <browser:page
+        name="site-controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".site.SiteControlPanel"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IAnalyticsPanelLayer"
+        />
+
+</configure>

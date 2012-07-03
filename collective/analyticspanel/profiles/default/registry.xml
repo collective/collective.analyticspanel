@@ -1,0 +1,3 @@
+<registry>
+    <records interface="collective.analyticspanel.interfaces.IAnalyticsSettings" />
+</registry>

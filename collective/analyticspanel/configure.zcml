@@ -1,0 +1,47 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.analyticspanel">
+
+  <five:registerPackage package="." />
+  <i18n:registerTranslations directory="locales" />
+
+  <cmf:registerDirectory name="collective.analyticspanel"/>
+
+  <include package="Products.CMFPlone" />
+  <include package="plone.app.registry" />
+
+  <permission
+        id="collective.analyticspanel.ManageAnalyticsSettings"
+        title="collective.analyticspanel: Manage analytics settings"
+        />
+
+  <include package=".browser" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.analyticspanel"
+      directory="profiles/default"
+      description="Add more control over the inclusion of JavaScript analytics code of your Plone site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.analyticspanel uninstall"
+      directory="profiles/uninstall"
+      description="Uninstall collective.analyticspanel"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="collective.analyticspanel.various"
+      title="collective.analyticspanel: miscellaneous import steps"
+      description="Various import steps that are not handled by GS import/export handlers."
+      handler="collective.analyticspanel.setuphandlers.setupVarious">
+  </genericsetup:importStep>
+  
+</configure>

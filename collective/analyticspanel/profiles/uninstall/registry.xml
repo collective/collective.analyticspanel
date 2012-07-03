@@ -1,0 +1,11 @@
+<registry>
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettings"
+	        field="general_code"
+            delete="True"/>
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettings"
+	        field="error_specific_code"
+            delete="True"/>
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettings"
+	        field="path_specific_code"
+            delete="True"/>
+</registry>

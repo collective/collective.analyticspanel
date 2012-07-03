@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="collective.analyticspanel">
+
+    <configlet
+        title="Analytics settings"
+        action_id="analytics-settings"
+        appId="collective.analyticspanel"
+        category="Products"
+        remove="True">
+            <permission>collective.analyticspanel: Manage analytics settings</permission>
+    </configlet>
+
+</object>
