@@ -3,6 +3,8 @@ import os
 
 version = '0.1.0'
 
+tests_require = ['plone.app.testing']
+
 setup(name='collective.analyticspanel',
       version=version,
       description="Add more control over the inclusion of JavaScript analytics code of your Plone site",
@@ -28,6 +30,8 @@ setup(name='collective.analyticspanel',
       namespace_packages=['collective'],
       include_package_data=True,
       zip_safe=False,
+      tests_require=tests_require,
+      extras_require=dict(tests=tests_require),
       install_requires=[
           'setuptools',
           'plone.app.registry',
