@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import unittest
-
 from zope.component import queryUtility, getMultiAdapter
 
 from plone.registry.interfaces import IRegistry
-
-from plone.app.testing import applyProfile
 
 from collective.analyticspanel.interfaces import IAnalyticsSettings
 from collective.analyticspanel.testing import ANALYTICS_PANEL_INTEGRATION_TESTING

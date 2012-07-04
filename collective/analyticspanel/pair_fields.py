@@ -1,20 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from persistent import Persistent
-
 from zope import schema
-from zope.schema.interfaces import IObject
-from zope.schema.fieldproperty import FieldProperty
-
 from zope.interface import Interface, implements
-import zope.interface
-import zope.component
 
 from z3c.form.object import registerFactoryAdapter
 
-from plone.registry.field import PersistentCollectionField, PersistentField
-from plone.registry.interfaces import IPersistentField
-from plone.registry.fieldfactory import persistentFieldAdapter
+from plone.registry.field import PersistentField
 
 from collective.analyticspanel import messageFactory as _
 

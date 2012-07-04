@@ -9,7 +9,6 @@ from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import applyProfile
-from plone.app.testing import quickInstallProduct
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 

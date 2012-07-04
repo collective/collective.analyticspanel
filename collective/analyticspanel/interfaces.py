@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from zope.interface import Interface, implements, alsoProvides
+from zope.interface import Interface
 from zope import schema
 
 from Products.CMFPlone import PloneMessageFactory as pmf
-
-from plone.registry import field as registry_field 
 
 from collective.analyticspanel import messageFactory as _
 from collective.analyticspanel.pair_fields import IErrorCodeValuePair, ISitePathValuePair
