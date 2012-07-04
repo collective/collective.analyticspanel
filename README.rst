@@ -51,12 +51,26 @@ JavaScript section and ignoring the default one.
 When more than a provided path match the current URL, the most specific ones is used.
 
 Hiding
-======
+------
 
 You can also use this product for hiding analytics code from specific site areas or error pages, leaving a default
 one for the rest of the site.
 
 Just configure options with empty code!
+
+Dependencies
+============
+
+This product has been tested on:
+
+* Plone 3.3 (read below)
+* Plone 4.2
+
+It's based on `plone.app.registry`__ that it not part of Plone on 3.3 version. You need to be sure that a compatible
+version is used (in my experience: use `version 1.0b1`__)
+
+__ http://pypi.python.org/pypi/plone.app.registry
+__ http://pypi.python.org/pypi/plone.app.registry/1.0b1
 
 Credits
 =======
