@@ -10,6 +10,8 @@ from plone.app.testing import IntegrationTesting
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import applyProfile
 from plone.app.testing import quickInstallProduct
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
 
 class AnalyticsPanel(PloneSandboxLayer):
 
@@ -27,6 +29,7 @@ class AnalyticsPanel(PloneSandboxLayer):
         portal.portal_properties.site_properties.webstats_js = 'SITE DEFAULT ANALYTICS'
         applyProfile(portal, 'collective.analyticspanel:default')
         #quickInstallProduct(portal, 'collective.analyticspanel')
+        setRoles(portal, TEST_USER_ID, ['Member', 'Manager'])
 
 
 ANALYTICS_PANEL_FIXTURE = AnalyticsPanel()

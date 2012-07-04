@@ -8,7 +8,7 @@ tests_require = ['plone.app.testing']
 setup(name='collective.analyticspanel',
       version=version,
       description="Add more control over the inclusion of JavaScript analytics code of your Plone site",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
@@ -24,7 +24,7 @@ setup(name='collective.analyticspanel',
       keywords='plone analytics plonegov',
       author='RedTurtle Technology',
       author_email='sviluppoplone@redturtle.it',
-      url='https://github.com/keul/collective.analyticspanel',
+      url='https://github.com/RedTurtle/collective.analyticspanel',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective'],

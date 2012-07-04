@@ -7,8 +7,6 @@ from zope.component import queryUtility, getMultiAdapter
 from plone.registry.interfaces import IRegistry
 
 from plone.app.testing import applyProfile
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
 
 from collective.analyticspanel.interfaces import IAnalyticsSettings
 from collective.analyticspanel.testing import ANALYTICS_PANEL_INTEGRATION_TESTING
@@ -26,8 +24,7 @@ class TestConfiguration(BaseTestCase):
 
     def test_hidden_plone_base_analytics(self):
         portal = self.layer['portal']
-        self.markRequestWithLayer()
-        setRoles(portal, TEST_USER_ID, ['Member', 'Manager'])
         request = self.layer['request']
+        self.markRequestWithLayer()
         controlpanel_view = getMultiAdapter((portal, request), name=u'site-controlpanel')
         self.assertTrue('form.webstats_js' not in controlpanel_view())
