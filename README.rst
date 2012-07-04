@@ -9,10 +9,10 @@ with an advanced version that:
 * add possibility to add specific JavaScript when the user is **inside error page**
   (useful for special code when on the "*Page not found*")
 * add possibility to **customize code for a site area** or a single content
-* not not display JavaScript code for specific area of the site
+* not display JavaScript code for specific area of the site
 
-How to use
-==========
+How to use it
+=============
 
 When installed, the basic Plone feature for handling JavaScript for statistics is hidden from the standard
 "*Site settings*" (in facts, it's moved to a new configuration panel called "*Analytics settings*") and
