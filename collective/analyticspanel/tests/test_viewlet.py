@@ -54,6 +54,7 @@ class TestViewlet(BaseTestCase):
         record = SitePathValuePair()
         record.path = u'/news'
         record.path_snippet = u'You are in the News section'
+        record.apply_to_subsection = True
         settings.path_specific_code += (record,)
 
         self.assertTrue('You are in the News section' in portal.news())
@@ -73,9 +74,11 @@ class TestViewlet(BaseTestCase):
         record1 = SitePathValuePair()
         record1.path = u'/news'
         record1.path_snippet = u'You are in the News section'
+        record1.apply_to_subsection = True
         record2 = SitePathValuePair()
         record2.path = u'/news/subnews'
         record2.path_snippet = u'You are in the Subnews section'
+        record2.apply_to_subsection = True
         settings.path_specific_code += (record1, record2)
 
         request.set('ACTUAL_URL', 'http://nohost/plone/news')
@@ -95,9 +98,35 @@ class TestViewlet(BaseTestCase):
         record = SitePathValuePair()
         record.path = u'/news'
         record.path_snippet = u''
+        record.apply_to_subsection = True
         settings.path_specific_code += (record,)
 
         self.assertFalse('SITE DEFAULT ANALYTICS' in portal.news())
+
+    def test_no_subtree_propagation(self):
+        portal = self.layer['portal']
+        portal.invokeFactory(type_name='Folder', id='news', title="News")
+
+        request = self.layer['request']
+        request.set('ACTUAL_URL', 'http://nohost/plone/news')
+        self.markRequestWithLayer()
+        settings = self.getSettings()
+
+        self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news())
+
+        record = SitePathValuePair()
+        record.path = u'/news'
+        record.path_snippet = u'Only for news'
+        record.apply_to_subsection = False
+        settings.path_specific_code += (record,)
+
+        self.assertTrue('Only for news' in portal.news())
+        
+        portal.news.invokeFactory(type_name='Folder', id='subnews', title="Subnews")
+        request.set('ACTUAL_URL', 'http://nohost/plone/news/subnews')
+
+        self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news.subnews())
+
 
 class TestViewletPathCleanup(BaseTestCase):
     
