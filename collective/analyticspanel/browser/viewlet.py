@@ -44,10 +44,15 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
         if settings.path_specific_code:
             best_path = best_code = ''
             for possible_path in settings.path_specific_code:
-                path = self.cleanup_path(possible_path.path) 
-                if context_path.startswith(path) and len(path)>len(best_path):
-                    best_path = path
-                    best_code = possible_path.path_snippet
+                path = self.cleanup_path(possible_path.path)
+                # Apply to while subtree?
+                if getattr(possible_path, 'apply_to_subsection', True):
+                    if context_path.startswith(path) and len(path)>len(best_path):
+                        best_path = path
+                        best_code = possible_path.path_snippet
+                # do not apply to the subsection
+                elif context_path==path:
+                    return safe_unicode(possible_path.path_snippet)
             if best_path:
                 return safe_unicode(best_code)
 

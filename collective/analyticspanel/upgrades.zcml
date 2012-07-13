@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.analyticspanel">
+
+  <genericsetup:upgradeStep
+        title="Upgrade to collective.analyticspanel 0.2"
+        description="Migrates collective.analyticspanel to 1001"
+        source="1000"
+        destination="1001"
+        handler=".setuphandlers.migrateTo1001"
+        sortkey="1"
+        profile="collective.analyticspanel:default"
+    />
+
+</configure>

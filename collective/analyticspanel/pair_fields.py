@@ -19,6 +19,10 @@ class ErrorCodeValuePair(object):
 class ISitePathValuePair(Interface):
     path = schema.TextLine(title=_(u"Site path"), required=True)
     path_snippet = schema.SourceText(title=_(u"Code to include"), required=False)
+    apply_to_subsection = schema.Bool(title=_(u"Apply to whole subtree"),
+                                              description=_(u"If checked, the rules will be applied also to contents "
+                                                            u"below that level"),
+                                              required=False, default=True)
 
 class SitePathValuePair(object):
     implements(ISitePathValuePair)

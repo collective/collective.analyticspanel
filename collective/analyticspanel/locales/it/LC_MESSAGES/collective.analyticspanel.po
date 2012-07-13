@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-07-03 13:03+0000\n"
+"POT-Creation-Date: 2012-07-13 14:29+0000\n"
 "PO-Revision-Date: 2012-07-03 12:59 +0000\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -16,73 +16,83 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.analyticspanel\n"
 
-#: ../browser/controlpanel.py:19
+msgid "Add more control over the inclusion of JavaScript analytics code of your Plone site"
+msgstr "Aggiunge maggior controllo nell'inclusione del codice JavaScript per statistiche del tuo sito Plone"
+
+#: ../browser/controlpanel.py:26
 #: ../profiles/default/controlpanel.xml
 msgid "Analytics settings"
 msgstr "Impostazioni delle statistiche"
 
-#: ../browser/controlpanel.py:34
+#: ../pair_fields.py:22
+msgid "Apply to whole subtree"
+msgstr "Applica all'interno sottoalbero"
+
+#: ../browser/controlpanel.py:41
 msgid "Cancel"
 msgstr "Annulla"
 
-#: ../browser/controlpanel.py:30
+#: ../browser/controlpanel.py:37
 msgid "Changes saved"
 msgstr "Modifiche salvate"
 
-#: ../pair_fields.py:23
+#: ../pair_fields.py:14
 msgid "Code to include"
 msgstr "Codice da includere"
 
-#: ../browser/controlpanel.py:36
+#: ../browser/controlpanel.py:43
 msgid "Edit cancelled"
 msgstr "Modifiche annullata"
 
-#: ../pair_fields.py:22
+#: ../pair_fields.py:13
 msgid "Error message"
 msgstr "Messaggio di errore"
 
-#: ../interfaces.py:36
+#: ../interfaces.py:34
 msgid "Error message related snippet"
 msgstr "Codice relativo al messaggio di errore"
 
-#: ../interfaces.py:43
+#: ../pair_fields.py:23
+msgid "If checked, the rules will be applied also to contents below that level"
+msgstr "Se selezionato, la regola verrà applicata anche ai contenuti sotto questo livello"
+
+#: ../interfaces.py:41
 msgid "JavaScript to be included inside specific site's paths"
 msgstr "JavaScript da includere in percorsi del sito"
 
-#: ../interfaces.py:31
+#: ../interfaces.py:29
 msgid "JavaScript to be included when an error message is get"
 msgstr "JavaScript da includere quando si ottengono messaggi di errore"
 
-#: ../browser/controlpanel.py:23
+#: ../browser/controlpanel.py:30
 msgid "Save"
 msgstr "Salva"
 
-#: ../pair_fields.py:29
+#: ../pair_fields.py:20
 msgid "Site path"
 msgstr "Percorso del sito"
 
-#: ../interfaces.py:49
+#: ../interfaces.py:47
 msgid "Site path related snippet"
 msgstr "Codice relativo a percorsi del sito"
 
 #. Default: "Manage JavaScript code and analytics snippets inclusion for the site"
-#: ../browser/controlpanel.py:20
+#: ../browser/controlpanel.py:27
 msgid "help_analytics_settings_editform"
-msgstr "Gestisce l'inclusione di di codice JavaScript e analytics per questo sito"
+msgstr "Gestisce l'inclusione di codice JavaScript e analytics per questo sito"
 
 #. Default: "Replace default code included when an error message returned is one of the following values.\nFor example: use \"NotFound\" for change JavaScript included inside NotFound page."
-#: ../interfaces.py:32
+#: ../interfaces.py:30
 msgid "help_error_specific_code"
 msgstr ""
 "Rimpiazza il codice predefinito incluso quando viene ritornato un messaggio di errore tra i seguenti.\n"
 "Per esempio: usa \"NotFound\" per cambiare il codice JavaScript incluso nella pagina di NotFound."
 
 #. Default: "Put there an absolute site path, and the statistics code you want to use there instead of the default ones.\nThe most specific path will be used.\nExample: /folder/subfolder"
-#: ../interfaces.py:44
+#: ../interfaces.py:42
 msgid "help_path_specific_code"
 msgstr ""
 "Inserisci qui un percorso assoluto del sito e il codice delle statistiche che vuoi includere al suo interno invece di quello predefinito.\n"
 "Verrà usato il percorso più specifico.\n"
 "Esempio: /cartella/sottocartella"
-
 

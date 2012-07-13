@@ -44,4 +44,6 @@
       handler="collective.analyticspanel.setuphandlers.setupVarious">
   </genericsetup:importStep>
   
+  <include file="upgrades.zcml" />
+  
 </configure>
