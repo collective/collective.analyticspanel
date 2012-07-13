@@ -26,7 +26,7 @@ msgstr "Impostazioni delle statistiche"
 
 #: ../pair_fields.py:22
 msgid "Apply to whole subtree"
-msgstr "Applica all'interno sottoalbero"
+msgstr "Applica all'intero sottoalbero"
 
 #: ../browser/controlpanel.py:41
 msgid "Cancel"
