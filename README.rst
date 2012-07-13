@@ -42,7 +42,7 @@ if this make sense for you!
 JavaScript to be included inside specific site's paths 
 ------------------------------------------------------
 
-.. image:: http://keul.it/images/plone/collective.analyticspanel/collective.analyticspanel-0.1.0-03.png
+.. image:: http://keul.it/images/plone/collective.analyticspanel/collective.analyticspanel-0.2.0-01.png
    :alt: Code for specific site's path
 
 You can use this section for putting a list of absolute site subsection you want to control, adding a specific

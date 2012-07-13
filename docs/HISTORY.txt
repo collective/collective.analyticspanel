@@ -7,7 +7,7 @@ Changelog
 - Some styles fixes in the management panel [keul]
 - Added new option: ``apply_to_subsection``
 - Added the "*autoresize*" CSS class for textareas
-  (can be used if you commonly install `collective.autoresizetextarea`__)
+  (in the case you also use `collective.autoresizetextarea`__)
   [keul] 
 
 __ http://pypi.python.org/pypi/collective.autoresizetextarea/
