@@ -50,6 +50,8 @@ JavaScript section and ignoring the default one.
 
 When more than a provided path match the current URL, the most specific ones is used.
 
+You can also uncheck the availability of the rule in the whole site subtree.
+
 Hiding
 ------
 
