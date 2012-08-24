@@ -21,7 +21,7 @@ new options are now available.
 JavaScript for web statistics support 
 -------------------------------------
 
-.. image:: http://keul.it/images/plone/collective.analyticspanel/collective.analyticspanel-0.1.0-01.png
+.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-01.png
    :alt: Basic feature
 
 Nothing new there: this is simply the basic Plone feature about JavaScript inclusion, just moved in this
@@ -30,7 +30,7 @@ separate panel. This is always the default code included when other options don'
 JavaScript to be included when an error message is get 
 ------------------------------------------------------
 
-.. image:: http://keul.it/images/plone/collective.analyticspanel/collective.analyticspanel-0.1.0-02.png
+.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-02.png
    :alt: Code for error page
 
 When this product is installed you can control JavaScript code based on error messages (ignoring the default one).
@@ -42,7 +42,7 @@ if this make sense for you!
 JavaScript to be included inside specific site's paths 
 ------------------------------------------------------
 
-.. image:: http://keul.it/images/plone/collective.analyticspanel/collective.analyticspanel-0.2.0-01.png
+.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-03.png
    :alt: Code for specific site's path
 
 You can use this section for putting a list of absolute site subsection you want to control, adding a specific
@@ -50,7 +50,25 @@ JavaScript section and ignoring the default one.
 
 When more than a provided path match the current URL, the most specific ones is used.
 
-You can also uncheck the availability of the rule in the whole site subtree.
+This kind of rule has a policy selection.
+
+.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-04.png
+   :align: right
+   :alt: Policy selection
+
+* The default one ("*to the whole subtree*") is for applying the rule to the whole subtree.
+* Using "*only to the context*" you can choose to apply the analytics code only to the content and not
+  to sub-contents inside it.
+* Using "*to the context and non-folderish children*" you are applying the analytics code only to the content,
+  and to all sub-contents inside it that are not folders.
+
+As the concept of "folder" in Plone can change with different add-ons installed, this last policy take care
+of using as "folder" what is defined in the "*Folderish types*" configuration option.
+
+.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-05.png
+   :alt: Folderish types selection panel
+
+The Plone native "Folder" type is selected by default.
 
 Hiding
 ------
