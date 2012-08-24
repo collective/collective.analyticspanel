@@ -62,6 +62,11 @@ This kind of rule has a policy selection.
 * Using "*to the context and non-folderish children*" you are applying the analytics code only to the content,
   and to all sub-contents inside it that are not folders.
 
+This last policy seems a little complex, but there are analytics tools (at least: `Piwik`__) where this can
+be useful to define custom reports for sections of the site.
+
+__ http://piwik.org/
+
 As the concept of "folder" in Plone can change with different add-ons installed, this last policy take care
 of using as "folder" what is defined in the "*Folderish types*" configuration option.
 
