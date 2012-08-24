@@ -4,7 +4,7 @@ from zope.component import queryUtility, getMultiAdapter
 
 from plone.registry.interfaces import IRegistry
 
-from collective.analyticspanel.interfaces import IAnalyticsSettings
+from collective.analyticspanel.interfaces import IAnalyticsSettingsSchema
 from collective.analyticspanel.testing import ANALYTICS_PANEL_INTEGRATION_TESTING
 
 from base import BaseTestCase
@@ -15,7 +15,7 @@ class TestConfiguration(BaseTestCase):
 
     def test_default_configuration(self):
         registry = queryUtility(IRegistry)
-        settings = registry.forInterface(IAnalyticsSettings, check=False)
+        settings = registry.forInterface(IAnalyticsSettingsSchema, check=False)
         self.assertEqual(settings.general_code, 'SITE DEFAULT ANALYTICS')
 
     def test_hidden_plone_base_analytics(self):

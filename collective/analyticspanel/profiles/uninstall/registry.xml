@@ -1,11 +1,14 @@
 <registry>
-    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettings"
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
 	        field="general_code"
             delete="True"/>
-    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettings"
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
 	        field="error_specific_code"
             delete="True"/>
-    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettings"
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
 	        field="path_specific_code"
+            delete="True"/>
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
+	        field="folderish_types"
             delete="True"/>
 </registry>

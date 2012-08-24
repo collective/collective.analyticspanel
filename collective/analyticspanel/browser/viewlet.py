@@ -6,7 +6,7 @@ from plone.registry.interfaces import IRegistry
 from Products.CMFPlone.utils import safe_unicode
 from plone.app.layout.analytics.view import AnalyticsViewlet as BaseAnalyticsViewlet
 
-from collective.analyticspanel.interfaces import IAnalyticsSettings
+from collective.analyticspanel.interfaces import IAnalyticsSettingsSchema
 
 class AnalyticsViewlet(BaseAnalyticsViewlet):
     
@@ -28,10 +28,14 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
     
     def render(self):
         registry = queryUtility(IRegistry)
-        settings = registry.forInterface(IAnalyticsSettings, check=False)
+        settings = registry.forInterface(IAnalyticsSettingsSchema, check=False)
         
         error_type = self.request.get('error_type', None)
-        context_path = '/'.join(self.context.getPhysicalPath())
+
+        context = self.context
+        context_physical_path = context.getPhysicalPath()
+        context_path = '/'.join(context_physical_path)
+        parent_path = '/'.join(context_physical_path[:-1])
 
         # 1 - error code take precedence
         if error_type and settings.error_specific_code:
@@ -45,15 +49,18 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
             best_path = best_code = ''
             for possible_path in settings.path_specific_code:
                 path = self.cleanup_path(possible_path.path)
-                # Apply to while subtree?
-                if getattr(possible_path, 'apply_to_subsection', True):
+                # Apply to whole subtree?
+                if getattr(possible_path, 'apply_to', '') == u'subtree':
                     if context_path.startswith(path) and len(path)>len(best_path):
                         best_path = path
                         best_code = possible_path.path_snippet
-                # do not apply to the subsection
-                elif context_path==path:
+                # Apply to the context only (do not apply to the subsection or children)
+                elif getattr(possible_path, 'apply_to', '') in (u'context', u'context_and_children') and context_path==path:
                     return safe_unicode(possible_path.path_snippet)
+                # Apply to the context if is not folderish and a proper configuration exits for the parent
+                elif getattr(possible_path, 'apply_to', '') == u'context_and_children' and parent_path==path:
+                    if not context.portal_type in settings.folderish_types:
+                        return safe_unicode(possible_path.path_snippet)
             if best_path:
                 return safe_unicode(best_code)
-
         return safe_unicode(settings.general_code)

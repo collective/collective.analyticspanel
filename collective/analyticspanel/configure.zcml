@@ -19,6 +19,11 @@
         title="collective.analyticspanel: Manage analytics settings"
         />
 
+  <utility
+	name="collective.analyticspanel.vocabularies.apply_to_choices"
+	component=".vocabularies.applyToChoicesVocabularyFactory"
+	/>
+
   <include package=".browser" />
 
   <genericsetup:registerProfile
@@ -26,6 +31,14 @@
       title="collective.analyticspanel"
       directory="profiles/default"
       description="Add more control over the inclusion of JavaScript analytics code of your Plone site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+      name="registry_cleanup"
+      title="collective.analyticspanel: cleanup_registry"
+      directory="profiles/clean_registry"
+      description="Clean deprecated collective.analyticspanel registry entries"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

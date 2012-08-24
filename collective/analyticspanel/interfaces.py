@@ -12,8 +12,9 @@ from collective.analyticspanel.pair_fields import PersistentObject
 class IAnalyticsPanelLayer(Interface):
     """Browser layer interface for collective.analyticspanel"""
 
+
 class IAnalyticsSettings(Interface):
-    """Settings used in the control panel for analyticspanel
+    """Settings used in the control panel for analyticspanel: general panel
     """
     
     general_code = schema.Text(
@@ -50,3 +51,21 @@ class IAnalyticsSettings(Interface):
             missing_value=(),
     )
 
+
+class IAnalyticsAdvancedSettings(Interface):
+    """Settings used in the control panel for analyticspanel: advanced panel
+    """
+
+    folderish_types = schema.Tuple(
+            title=_(u"Folderish types"),
+            description=_("help_folderish_types",
+                          default=u'Defines there which portal types must be treat as "folderish"'),
+            required=False,
+            value_type=schema.Choice(vocabulary=u"plone.app.vocabularies.ReallyUserFriendlyTypes"),
+            default=(u'Folder',),
+    )
+
+
+class IAnalyticsSettingsSchema(IAnalyticsSettings, IAnalyticsAdvancedSettings):
+    """Settings used in the control panel for analyticspanel: unified panel
+    """

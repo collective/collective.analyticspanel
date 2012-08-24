@@ -7,9 +7,11 @@ from Products.statusmessages.interfaces import IStatusMessage
 from plone.app.registry.browser import controlpanel
 
 from z3c.form import button
-from z3c.form.browser.checkbox import SingleCheckBoxFieldWidget
+from z3c.form import group
+from z3c.form import field
 
-from collective.analyticspanel.interfaces import IAnalyticsSettings
+from collective.analyticspanel.interfaces import IAnalyticsSettingsSchema
+from collective.analyticspanel.interfaces import IAnalyticsSettings, IAnalyticsAdvancedSettings
 from collective.analyticspanel import messageFactory as _
 
 def fix_widget_style(widget):
@@ -18,10 +20,17 @@ def fix_widget_style(widget):
     widget.rows = 7
 
 
+class FormAdvanced(group.Group):
+    label = _(u"Advanced settings")
+    fields = field.Fields(IAnalyticsAdvancedSettings)
+
+
 class AnalyticsSettingsEditForm(controlpanel.RegistryEditForm):
     """Media settings form.
     """
-    schema = IAnalyticsSettings
+    schema = IAnalyticsSettingsSchema
+    fields = field.Fields(IAnalyticsSettings)
+    groups = (FormAdvanced,)
     id = "AnalyticsSettingsEditForm"
     label = _(u"Analytics settings")
     description = _(u"help_analytics_settings_editform",
@@ -55,7 +64,6 @@ class AnalyticsSettingsEditForm(controlpanel.RegistryEditForm):
         for main_widget in self.widgets['path_specific_code'].widgets: 
             path_widgets = main_widget.subform.widgets
             path_widgets['path'].style = u'width: 100%'
-            path_widgets['apply_to_subsection'].widgetFactory = SingleCheckBoxFieldWidget
             fix_widget_style(path_widgets['path_snippet'])
 
 

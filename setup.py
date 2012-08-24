@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.2.1.dev0'
+version = '0.3.0.dev0'
 
 tests_require = ['plone.app.testing']
 
@@ -31,7 +31,7 @@ setup(name='collective.analyticspanel',
       include_package_data=True,
       zip_safe=False,
       tests_require=tests_require,
-      extras_require=dict(tests=tests_require),
+      extras_require=dict(test=tests_require),
       install_requires=[
           'setuptools',
           'plone.app.registry',

@@ -54,7 +54,7 @@ class TestViewlet(BaseTestCase):
         record = SitePathValuePair()
         record.path = u'/news'
         record.path_snippet = u'You are in the News section'
-        record.apply_to_subsection = True
+        record.apply_to = u'subtree'
         settings.path_specific_code += (record,)
 
         self.assertTrue('You are in the News section' in portal.news())
@@ -74,11 +74,11 @@ class TestViewlet(BaseTestCase):
         record1 = SitePathValuePair()
         record1.path = u'/news'
         record1.path_snippet = u'You are in the News section'
-        record1.apply_to_subsection = True
+        record1.apply_to = u'subtree'
         record2 = SitePathValuePair()
         record2.path = u'/news/subnews'
         record2.path_snippet = u'You are in the Subnews section'
-        record2.apply_to_subsection = True
+        record2.apply_to = u'subtree'
         settings.path_specific_code += (record1, record2)
 
         request.set('ACTUAL_URL', 'http://nohost/plone/news')
@@ -98,7 +98,7 @@ class TestViewlet(BaseTestCase):
         record = SitePathValuePair()
         record.path = u'/news'
         record.path_snippet = u''
-        record.apply_to_subsection = True
+        record.apply_to = u'subtree'
         settings.path_specific_code += (record,)
 
         self.assertFalse('SITE DEFAULT ANALYTICS' in portal.news())
@@ -117,7 +117,7 @@ class TestViewlet(BaseTestCase):
         record = SitePathValuePair()
         record.path = u'/news'
         record.path_snippet = u'Only for news'
-        record.apply_to_subsection = False
+        record.apply_to = u'context'
         settings.path_specific_code += (record,)
 
         self.assertTrue('Only for news' in portal.news())
@@ -126,6 +126,55 @@ class TestViewlet(BaseTestCase):
         request.set('ACTUAL_URL', 'http://nohost/plone/news/subnews')
 
         self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news.subnews())
+
+    def test_apply_to_folder_and_children(self):
+        request = self.layer['request']
+        self.markRequestWithLayer()
+        settings = self.getSettings()
+
+        portal = self.layer['portal']
+        portal.invokeFactory(type_name='Folder', id='news', title="News")
+        news = portal.news
+        news.invokeFactory(type_name='Folder', id='subnews', title="Sub news")
+        news.invokeFactory(type_name='Document', id='home', title="Homepage for news section")
+
+        record = SitePathValuePair()
+        record.path = u'/news'
+        record.path_snippet = u'For news and children'
+        record.apply_to = u'context_and_children'
+        settings.path_specific_code += (record,)
+
+        request.set('ACTUAL_URL', 'http://nohost/plone/news')
+        self.assertTrue('For news and children' in portal.news())
+        request.set('ACTUAL_URL', 'http://nohost/plone/news/home')
+        self.assertTrue('For news and children' in portal.news.home())
+        request.set('ACTUAL_URL', 'http://nohost/plone/news/subnews')
+        self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news.subnews())
+
+    def test_apply_to_folder_and_children_with_new_folderish(self):
+        request = self.layer['request']
+        self.markRequestWithLayer()
+        settings = self.getSettings()
+
+        portal = self.layer['portal']
+        portal.invokeFactory(type_name='Folder', id='news', title="News")
+        news = portal.news
+        news.invokeFactory(type_name='News Item', id='real_news', title="A real news")
+        news.invokeFactory(type_name='Document', id='home', title="Homepage for news section")
+
+        record = SitePathValuePair()
+        record.path = u'/news'
+        record.path_snippet = u'For news and children'
+        record.apply_to = u'context_and_children'
+        settings.path_specific_code += (record,)
+        settings.folderish_types = (u'Folder', u'News Item')
+
+        request.set('ACTUAL_URL', 'http://nohost/plone/news')
+        self.assertTrue('For news and children' in portal.news())
+        request.set('ACTUAL_URL', 'http://nohost/plone/news/home')
+        self.assertTrue('For news and children' in portal.news.home())
+        request.set('ACTUAL_URL', 'http://nohost/plone/news/real_news')
+        self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news.real_news())
 
 
 class TestViewletPathCleanup(BaseTestCase):
