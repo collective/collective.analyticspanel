@@ -19,9 +19,9 @@ class ApplyToChoicesVocabulary(object):
 
     def __call__(self, context):
         
-        terms = [SimpleTerm(u'subtree',_(u'...to the whole subtree')),
-                 SimpleTerm(u'context',_(u'...only to the context')),
-                 SimpleTerm(u'context_and_children',_(u'...to the context and non-folderish children')),
+        terms = [SimpleTerm(u'subtree', _(u'...to the whole subtree')),
+                 SimpleTerm(u'context', _(u'...only to the context')),
+                 SimpleTerm(u'context_and_children', _(u'...to the context and non-folderish children')),
                  ]
         return SimpleVocabulary(terms)
 

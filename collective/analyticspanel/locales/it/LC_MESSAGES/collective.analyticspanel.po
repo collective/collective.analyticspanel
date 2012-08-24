@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-07-13 14:29+0000\n"
+"POT-Creation-Date: 2012-08-24 15:16+0000\n"
 "PO-Revision-Date: 2012-07-03 12:59 +0000\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -16,23 +16,39 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.analyticspanel\n"
 
+#: ../vocabularies.py:23
+msgid "...only to the context"
+msgstr "...solo al contesto"
+
+#: ../vocabularies.py:24
+msgid "...to the context and non-folderish children"
+msgstr "...al contesto e ai contenuti non-cartella"
+
+#: ../vocabularies.py:22
+msgid "...to the whole subtree"
+msgstr "...all'interno sottoalbero"
+
 msgid "Add more control over the inclusion of JavaScript analytics code of your Plone site"
 msgstr "Aggiunge maggior controllo nell'inclusione del codice JavaScript per statistiche del tuo sito Plone"
 
-#: ../browser/controlpanel.py:26
+#: ../browser/controlpanel.py:24
+msgid "Advanced settings"
+msgstr "Impostazioni avanzate"
+
+#: ../browser/controlpanel.py:35
 #: ../profiles/default/controlpanel.xml
 msgid "Analytics settings"
 msgstr "Impostazioni delle statistiche"
 
 #: ../pair_fields.py:22
-msgid "Apply to whole subtree"
-msgstr "Applica all'intero sottoalbero"
+msgid "Apply rule to..."
+msgstr "Applica regola a..."
 
-#: ../browser/controlpanel.py:41
+#: ../browser/controlpanel.py:50
 msgid "Cancel"
 msgstr "Annulla"
 
-#: ../browser/controlpanel.py:37
+#: ../browser/controlpanel.py:46
 msgid "Changes saved"
 msgstr "Modifiche salvate"
 
@@ -40,7 +56,7 @@ msgstr "Modifiche salvate"
 msgid "Code to include"
 msgstr "Codice da includere"
 
-#: ../browser/controlpanel.py:43
+#: ../browser/controlpanel.py:52
 msgid "Edit cancelled"
 msgstr "Modifiche annullata"
 
@@ -48,23 +64,23 @@ msgstr "Modifiche annullata"
 msgid "Error message"
 msgstr "Messaggio di errore"
 
-#: ../interfaces.py:34
+#: ../interfaces.py:35
 msgid "Error message related snippet"
 msgstr "Codice relativo al messaggio di errore"
 
-#: ../pair_fields.py:23
-msgid "If checked, the rules will be applied also to contents below that level"
-msgstr "Se selezionato, la regola verrà applicata anche ai contenuti sotto questo livello"
+#: ../interfaces.py:60
+msgid "Folderish types"
+msgstr "Tipi cartella"
 
-#: ../interfaces.py:41
+#: ../interfaces.py:42
 msgid "JavaScript to be included inside specific site's paths"
 msgstr "JavaScript da includere in percorsi del sito"
 
-#: ../interfaces.py:29
+#: ../interfaces.py:30
 msgid "JavaScript to be included when an error message is get"
 msgstr "JavaScript da includere quando si ottengono messaggi di errore"
 
-#: ../browser/controlpanel.py:30
+#: ../browser/controlpanel.py:39
 msgid "Save"
 msgstr "Salva"
 
@@ -72,24 +88,38 @@ msgstr "Salva"
 msgid "Site path"
 msgstr "Percorso del sito"
 
-#: ../interfaces.py:47
+#: ../interfaces.py:48
 msgid "Site path related snippet"
 msgstr "Codice relativo a percorsi del sito"
 
 #. Default: "Manage JavaScript code and analytics snippets inclusion for the site"
-#: ../browser/controlpanel.py:27
+#: ../browser/controlpanel.py:36
 msgid "help_analytics_settings_editform"
 msgstr "Gestisce l'inclusione di codice JavaScript e analytics per questo sito"
 
+#. Default: "Choose a policy for applying this rule.\nWhen using \"context and children\" note that the rule will be applied to the context and all non-folderish children.\nThis make sense only with folderish context.\nSee \"Advanced settings\" section for defining what is a folder for your site."
+#: ../pair_fields.py:23
+msgid "help_apply_to"
+msgstr ""
+"Scegli la politica con cui applicare questa regola.\n"
+"Quando usi \"contesto e contenuti\" tieni presente che la regola sarà applicata al contesto e a tutti i contenuti che non sono cartella.\n"
+"Questo ha senso solo quando il contesto è una cartella.\n"
+"Vedi la sezione \"Impostazioni avanzate\" per definire che cosa è una cartella nel tuo sito."
+
 #. Default: "Replace default code included when an error message returned is one of the following values.\nFor example: use \"NotFound\" for change JavaScript included inside NotFound page."
-#: ../interfaces.py:30
+#: ../interfaces.py:31
 msgid "help_error_specific_code"
 msgstr ""
 "Rimpiazza il codice predefinito incluso quando viene ritornato un messaggio di errore tra i seguenti.\n"
 "Per esempio: usa \"NotFound\" per cambiare il codice JavaScript incluso nella pagina di NotFound."
 
+#. Default: "Defines there which portal types must be treat as \"folderish\""
+#: ../interfaces.py:61
+msgid "help_folderish_types"
+msgstr "Definisci quali tipi di contenuto devono essere trattati come \"cartella\""
+
 #. Default: "Put there an absolute site path, and the statistics code you want to use there instead of the default ones.\nThe most specific path will be used.\nExample: /folder/subfolder"
-#: ../interfaces.py:42
+#: ../interfaces.py:43
 msgid "help_path_specific_code"
 msgstr ""
 "Inserisci qui un percorso assoluto del sito e il codice delle statistiche che vuoi includere al suo interno invece di quello predefinito.\n"
