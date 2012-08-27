@@ -92,10 +92,11 @@ This product has been tested on:
 * Plone 4.2
 
 It's based on `plone.app.registry`__ that it not part of Plone on 3.3 version. You need to be sure that a compatible
-version is used (in my experience: use `version 1.0b1`__)
+version is used (in my experience: use `plone.app.registry 1.0b1`__ and `plone.registry`__).
 
 __ http://pypi.python.org/pypi/plone.app.registry
 __ http://pypi.python.org/pypi/plone.app.registry/1.0b1
+__ http://pypi.python.org/pypi/plone.registry/1.0
 
 Credits
 =======
