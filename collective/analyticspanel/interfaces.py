@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import sys
+
 from zope.interface import Interface
 from zope import schema
 
@@ -8,6 +10,15 @@ from Products.CMFPlone import PloneMessageFactory as pmf
 from collective.analyticspanel import messageFactory as _
 from collective.analyticspanel.pair_fields import IErrorCodeValuePair, ISitePathValuePair
 from collective.analyticspanel.pair_fields import PersistentObject
+
+# This is awful, but plone.app.vocabularies version used on Plone 3 has a bug that will never be fixed
+# See http://plone.293351.n2.nabble.com/Can-t-load-plone-app-vocabularies-ReallyUserFriendlyTypes-td7558326.html
+# Please, remove this crappy thing as soon as Plone 3 support will be removed
+if sys.version_info < (2, 6):
+    # Plone 3
+    FOLDER_TYPES_VALUESTYPE = schema.TextLine()
+else:
+    FOLDER_TYPES_VALUESTYPE = schema.Choice(vocabulary=u"plone.app.vocabularies.ReallyUserFriendlyTypes")
 
 class IAnalyticsPanelLayer(Interface):
     """Browser layer interface for collective.analyticspanel"""
@@ -61,7 +72,7 @@ class IAnalyticsAdvancedSettings(Interface):
             description=_("help_folderish_types",
                           default=u'Defines there which portal types must be treat as "folderish"'),
             required=False,
-            value_type=schema.Choice(vocabulary=u"plone.app.vocabularies.ReallyUserFriendlyTypes"),
+            value_type=FOLDER_TYPES_VALUESTYPE,
             default=(u'Folder',),
     )
 

@@ -5,7 +5,7 @@ Changelog
 ------------------
 
 - Italian i18n fixes [keul]
-- Added a way to set rules for subsection and leaf contents inside
+- Added a way to set rules for subsections and leaf contents inside
   (subcontents that are not folderish) [keul]
 
 0.2.0 (2012-07-13)
