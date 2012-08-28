@@ -35,6 +35,7 @@ setup(name='collective.analyticspanel',
       install_requires=[
           'setuptools',
           'plone.app.registry',
+          'plone.app.vocabularies',
       ],
       entry_points="""
       [z3c.autoinclude.plugin]

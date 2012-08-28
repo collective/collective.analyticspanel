@@ -13,7 +13,8 @@
 
   <include package="Products.CMFPlone" />
   <include package="plone.app.registry" />
-
+  <include package="plone.app.vocabularies" />
+  
   <permission
         id="collective.analyticspanel.ManageAnalyticsSettings"
         title="collective.analyticspanel: Manage analytics settings"
