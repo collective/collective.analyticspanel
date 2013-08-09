@@ -30,7 +30,7 @@ separate panel. This is always the default code included when other options don'
 JavaScript to be included when an error message is get 
 ------------------------------------------------------
 
-.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-02.png
+.. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-02.png
    :alt: Code for error page
 
 When this product is installed you can control JavaScript code based on error messages (ignoring the default one).
@@ -42,7 +42,7 @@ if this make sense for you!
 JavaScript to be included inside specific site's paths 
 ------------------------------------------------------
 
-.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-03.png
+.. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-03.png
    :alt: Code for specific site's path
 
 You can use this section for putting a list of absolute site subsection you want to control, adding a specific
@@ -52,7 +52,7 @@ When more than a provided path match the current URL, the most specific ones is 
 
 This kind of rule has a policy selection.
 
-.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-04.png
+.. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-04.png
    :align: right
    :alt: Policy selection
 
@@ -70,7 +70,7 @@ __ http://piwik.org/
 As the concept of "folder" in Plone can change with different add-ons installed, this last policy take care
 of using as "folder" what is defined in the "*Folderish types*" configuration option.
 
-.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-05.png
+.. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-05.png
    :alt: Folderish types selection panel
 
 The Plone native "Folder" type is selected by default.
