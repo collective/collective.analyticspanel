@@ -11,15 +11,15 @@ from collective.analyticspanel.interfaces import IAnalyticsSettingsSchema
 class AnalyticsViewlet(BaseAnalyticsViewlet):
     
     def cleanup_path(self, path):
-        """Given a path, cleanup trailing slashes and add to it portal id"""
+        """Given a path, cleanup trailing slashes and add to it portal's path"""
         plone_tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
-        portal_id = plone_tools.url().getPortalObject().getId()
+        portal_path = plone_tools.url().getPortalPath()
 
         if not path.startswith('/'):
             path = "/%s" % path
 
-        if not path.startswith('/%s' % portal_id):
-            path = "/%s%s" % (portal_id, path)
+        if not path.startswith(portal_path):
+            path = portal_path + path
         
         if path.endswith('/'):
             path = path[:-1]
