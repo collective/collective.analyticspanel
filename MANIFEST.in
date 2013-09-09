@@ -3,5 +3,5 @@ include *.rst
 recursive-include docs *
 recursive-include collective *
 
-global-exclude *pyc
+global-exclude *.pyc
 global-include *.mo
