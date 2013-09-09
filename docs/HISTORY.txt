@@ -7,7 +7,9 @@ Changelog
 - Fix bug that prevented viewlet from being shown on plone sites
   located in subfolders (eg. /project/Plone) which is quite common
   when ZODB mountpoints are used. [fRiSi]
+- Fixed a bug that randomly hit the installation (See `#2`__) [keul]
 
+__ https://github.com/RedTurtle/collective.analyticspanel/issues/2
 
 0.3.0 (2012-08-28)
 ------------------
