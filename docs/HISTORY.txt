@@ -8,6 +8,7 @@ Changelog
   located in subfolders (eg. /project/Plone) which is quite common
   when ZODB mountpoints are used. [fRiSi]
 - Fixed a bug that randomly hit the installation (See `#2`__) [keul]
+- Fixed translations not shown in vocabulary [keul]
 
 __ https://github.com/RedTurtle/collective.analyticspanel/issues/2
 

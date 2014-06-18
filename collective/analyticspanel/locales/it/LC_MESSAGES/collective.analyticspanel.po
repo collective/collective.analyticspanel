@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-24 15:16+0000\n"
+"POT-Creation-Date: 2014-06-18 07:23+0000\n"
 "PO-Revision-Date: 2012-07-03 12:59 +0000\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -15,18 +15,6 @@ msgstr ""
 "Language-Name: Italian\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.analyticspanel\n"
-
-#: ../vocabularies.py:23
-msgid "...only to the context"
-msgstr "...solo al contesto"
-
-#: ../vocabularies.py:24
-msgid "...to the context and non-folderish children"
-msgstr "...al contesto e ai contenuti non-cartella"
-
-#: ../vocabularies.py:22
-msgid "...to the whole subtree"
-msgstr "...all'interno sottoalbero"
 
 msgid "Add more control over the inclusion of JavaScript analytics code of your Plone site"
 msgstr "Aggiunge maggior controllo nell'inclusione del codice JavaScript per statistiche del tuo sito Plone"
@@ -64,19 +52,19 @@ msgstr "Modifiche annullata"
 msgid "Error message"
 msgstr "Messaggio di errore"
 
-#: ../interfaces.py:35
+#: ../interfaces.py:46
 msgid "Error message related snippet"
 msgstr "Codice relativo al messaggio di errore"
 
-#: ../interfaces.py:60
+#: ../interfaces.py:71
 msgid "Folderish types"
 msgstr "Tipi cartella"
 
-#: ../interfaces.py:42
+#: ../interfaces.py:53
 msgid "JavaScript to be included inside specific site's paths"
 msgstr "JavaScript da includere in percorsi del sito"
 
-#: ../interfaces.py:30
+#: ../interfaces.py:41
 msgid "JavaScript to be included when an error message is get"
 msgstr "JavaScript da includere quando si ottengono messaggi di errore"
 
@@ -88,7 +76,7 @@ msgstr "Salva"
 msgid "Site path"
 msgstr "Percorso del sito"
 
-#: ../interfaces.py:48
+#: ../interfaces.py:59
 msgid "Site path related snippet"
 msgstr "Codice relativo a percorsi del sito"
 
@@ -107,22 +95,36 @@ msgstr ""
 "Vedi la sezione \"Impostazioni avanzate\" per definire che cosa è una cartella nel tuo sito."
 
 #. Default: "Replace default code included when an error message returned is one of the following values.\nFor example: use \"NotFound\" for change JavaScript included inside NotFound page."
-#: ../interfaces.py:31
+#: ../interfaces.py:42
 msgid "help_error_specific_code"
 msgstr ""
 "Rimpiazza il codice predefinito incluso quando viene ritornato un messaggio di errore tra i seguenti.\n"
 "Per esempio: usa \"NotFound\" per cambiare il codice JavaScript incluso nella pagina di NotFound."
 
 #. Default: "Defines there which portal types must be treat as \"folderish\""
-#: ../interfaces.py:61
+#: ../interfaces.py:72
 msgid "help_folderish_types"
 msgstr "Definisci quali tipi di contenuto devono essere trattati come \"cartella\""
 
 #. Default: "Put there an absolute site path, and the statistics code you want to use there instead of the default ones.\nThe most specific path will be used.\nExample: /folder/subfolder"
-#: ../interfaces.py:43
+#: ../interfaces.py:54
 msgid "help_path_specific_code"
 msgstr ""
 "Inserisci qui un percorso assoluto del sito e il codice delle statistiche che vuoi includere al suo interno invece di quello predefinito.\n"
 "Verrà usato il percorso più specifico.\n"
 "Esempio: /cartella/sottocartella"
 
+#. Default: "...to the context and non-folderish children"
+#: ../vocabularies.py:26
+msgid "scope_context_and_not_folderish"
+msgstr "...al contesto e ai contenuti non-cartella"
+
+#. Default: "...only to the context"
+#: ../vocabularies.py:24
+msgid "scope_context_only"
+msgstr "...solo al contesto"
+
+#. Default: "...to the whole subtree"
+#: ../vocabularies.py:22
+msgid "scope_whole_subtree"
+msgstr "...all'interno sottoalbero"

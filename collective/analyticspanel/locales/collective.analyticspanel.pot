@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-24 15:16+0000\n"
+"POT-Creation-Date: 2014-06-18 07:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,18 +16,6 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.analyticspanel\n"
-
-#: ../vocabularies.py:23
-msgid "...only to the context"
-msgstr ""
-
-#: ../vocabularies.py:24
-msgid "...to the context and non-folderish children"
-msgstr ""
-
-#: ../vocabularies.py:22
-msgid "...to the whole subtree"
-msgstr ""
 
 msgid "Add more control over the inclusion of JavaScript analytics code of your Plone site"
 msgstr ""
@@ -65,19 +53,19 @@ msgstr ""
 msgid "Error message"
 msgstr ""
 
-#: ../interfaces.py:35
+#: ../interfaces.py:46
 msgid "Error message related snippet"
 msgstr ""
 
-#: ../interfaces.py:60
+#: ../interfaces.py:71
 msgid "Folderish types"
 msgstr ""
 
-#: ../interfaces.py:42
+#: ../interfaces.py:53
 msgid "JavaScript to be included inside specific site's paths"
 msgstr ""
 
-#: ../interfaces.py:30
+#: ../interfaces.py:41
 msgid "JavaScript to be included when an error message is get"
 msgstr ""
 
@@ -89,7 +77,7 @@ msgstr ""
 msgid "Site path"
 msgstr ""
 
-#: ../interfaces.py:48
+#: ../interfaces.py:59
 msgid "Site path related snippet"
 msgstr ""
 
@@ -104,17 +92,32 @@ msgid "help_apply_to"
 msgstr ""
 
 #. Default: "Replace default code included when an error message returned is one of the following values.\nFor example: use \"NotFound\" for change JavaScript included inside NotFound page."
-#: ../interfaces.py:31
+#: ../interfaces.py:42
 msgid "help_error_specific_code"
 msgstr ""
 
 #. Default: "Defines there which portal types must be treat as \"folderish\""
-#: ../interfaces.py:61
+#: ../interfaces.py:72
 msgid "help_folderish_types"
 msgstr ""
 
 #. Default: "Put there an absolute site path, and the statistics code you want to use there instead of the default ones.\nThe most specific path will be used.\nExample: /folder/subfolder"
-#: ../interfaces.py:43
+#: ../interfaces.py:54
 msgid "help_path_specific_code"
+msgstr ""
+
+#. Default: "...to the context and non-folderish children"
+#: ../vocabularies.py:26
+msgid "scope_context_and_not_folderish"
+msgstr ""
+
+#. Default: "...only to the context"
+#: ../vocabularies.py:24
+msgid "scope_context_only"
+msgstr ""
+
+#. Default: "...to the whole subtree"
+#: ../vocabularies.py:22
+msgid "scope_whole_subtree"
 msgstr ""
 
