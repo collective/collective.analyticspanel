@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-06-18 07:23+0000\n"
+"POT-Creation-Date: 2014-06-25 08:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Analytics settings"
 msgstr ""
 
-#: ../pair_fields.py:22
+#: ../pair_fields.py:31
 msgid "Apply rule to..."
 msgstr ""
 
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Changes saved"
 msgstr ""
 
-#: ../pair_fields.py:14
+#: ../pair_fields.py:12
 msgid "Code to include"
 msgstr ""
 
@@ -49,23 +49,27 @@ msgstr ""
 msgid "Edit cancelled"
 msgstr ""
 
-#: ../pair_fields.py:13
+#: ../pair_fields.py:11
 msgid "Error message"
 msgstr ""
 
-#: ../interfaces.py:46
+#: ../interfaces.py:64
 msgid "Error message related snippet"
 msgstr ""
 
-#: ../interfaces.py:71
+#: ../interfaces.py:89
 msgid "Folderish types"
 msgstr ""
 
-#: ../interfaces.py:53
+#: ../pair_fields.py:13
+msgid "Include code in..."
+msgstr ""
+
+#: ../interfaces.py:71
 msgid "JavaScript to be included inside specific site's paths"
 msgstr ""
 
-#: ../interfaces.py:41
+#: ../interfaces.py:59
 msgid "JavaScript to be included when an error message is get"
 msgstr ""
 
@@ -73,12 +77,32 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../pair_fields.py:20
+#: ../pair_fields.py:29
 msgid "Site path"
 msgstr ""
 
-#: ../interfaces.py:59
+#: ../interfaces.py:77
 msgid "Site path related snippet"
+msgstr ""
+
+#. Default: "For enabling web statistics support from external providers (for e.g. Google Analytics). Paste the code snippets provided.\nIt will be included in the rendered HTML as entered near the end of the page.\nHistorically Plone put it's analytics code here and this can still be the best place for old analytics software that block the page rendering."
+#: ../interfaces.py:47
+msgid "general_footer_code_desciption"
+msgstr ""
+
+#. Default: "JavaScript for web statistics support (in the footer of the page)"
+#: ../interfaces.py:45
+msgid "general_footer_code_label"
+msgstr ""
+
+#. Default: "For enabling web statistics support from external providers (for e.g. Google Analytics). Paste the code snippets provided. It will be included in the rendered HTML as entered near the beginning of the page's BODY.\nCommonly this is the best place where to put modern analytics code."
+#: ../interfaces.py:34
+msgid "general_header_code_desciption"
+msgstr ""
+
+#. Default: "JavaScript for web statistics support (in the header of the page)"
+#: ../interfaces.py:32
+msgid "general_header_code_label"
 msgstr ""
 
 #. Default: "Manage JavaScript code and analytics snippets inclusion for the site"
@@ -87,27 +111,37 @@ msgid "help_analytics_settings_editform"
 msgstr ""
 
 #. Default: "Choose a policy for applying this rule.\nWhen using \"context and children\" note that the rule will be applied to the context and all non-folderish children.\nThis make sense only with folderish context.\nSee \"Advanced settings\" section for defining what is a folder for your site."
-#: ../pair_fields.py:23
+#: ../pair_fields.py:32
 msgid "help_apply_to"
 msgstr ""
 
 #. Default: "Replace default code included when an error message returned is one of the following values.\nFor example: use \"NotFound\" for change JavaScript included inside NotFound page."
-#: ../interfaces.py:42
+#: ../interfaces.py:60
 msgid "help_error_specific_code"
 msgstr ""
 
 #. Default: "Defines there which portal types must be treat as \"folderish\""
-#: ../interfaces.py:72
+#: ../interfaces.py:90
 msgid "help_folderish_types"
 msgstr ""
 
 #. Default: "Put there an absolute site path, and the statistics code you want to use there instead of the default ones.\nThe most specific path will be used.\nExample: /folder/subfolder"
-#: ../interfaces.py:54
+#: ../interfaces.py:72
 msgid "help_path_specific_code"
 msgstr ""
 
+#. Default: "...in the footer of the page"
+#: ../vocabularies.py:42
+msgid "position_footer"
+msgstr ""
+
+#. Default: "...in the header of the page"
+#: ../vocabularies.py:40
+msgid "position_header"
+msgstr ""
+
 #. Default: "...to the context and non-folderish children"
-#: ../vocabularies.py:26
+#: ../vocabularies.py:27
 msgid "scope_context_and_not_folderish"
 msgstr ""
 
