@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.4.0 (unreleased)
+0.4.0 (2014-06-25)
 ------------------
 
 - Fix bug that prevented viewlet from being shown on plone sites
