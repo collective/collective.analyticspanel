@@ -24,6 +24,10 @@
 	name="collective.analyticspanel.vocabularies.apply_to_choices"
 	component=".vocabularies.applyToChoicesVocabularyFactory"
 	/>
+  <utility
+	name="collective.analyticspanel.vocabularies.positions"
+	component=".vocabularies.snippetPositionVocabularyFactory"
+	/>
 
   <include package=".browser" />
 

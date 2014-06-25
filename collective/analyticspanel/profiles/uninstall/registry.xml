@@ -1,5 +1,8 @@
 <registry>
     <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
+	        field="general_header_code"
+            delete="True"/>
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
 	        field="general_code"
             delete="True"/>
     <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"

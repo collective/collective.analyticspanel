@@ -29,4 +29,21 @@ class ApplyToChoicesVocabulary(object):
                  ]
         return SimpleVocabulary(terms)
 
+
+class SnippetPositionsVocabulary(object):
+    """Vocabulary for the position of the snippet
+    """
+    implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        
+        terms = [SimpleTerm(u'header', u'header', _('position_header',
+                                                      default=u'...in the header of the page')),
+                 SimpleTerm(u'footer', u'footer', _('position_footer',
+                              default=u'...in the footer of the page')),
+                 ]
+        return SimpleVocabulary(terms)
+
+
 applyToChoicesVocabularyFactory = ApplyToChoicesVocabulary()
+snippetPositionVocabularyFactory = SnippetPositionsVocabulary()

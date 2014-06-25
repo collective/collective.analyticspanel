@@ -25,4 +25,14 @@
         profile="collective.analyticspanel:default"
     />
 
+  <genericsetup:upgradeStep
+        title="Upgrade to collective.analyticspanel 0.4"
+        description="Migrates collective.analyticspanel to 1100"
+        source="1020"
+        destination="1120"
+        handler=".setuphandlers.migrateTo1100"
+        sortkey="2"
+        profile="collective.analyticspanel:default"
+    />
+
 </configure>

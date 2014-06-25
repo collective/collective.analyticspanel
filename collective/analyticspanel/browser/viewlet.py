@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
 from zope.component import queryUtility, getMultiAdapter
-
 from plone.registry.interfaces import IRegistry
 from Products.CMFPlone.utils import safe_unicode
 from plone.app.layout.analytics.view import AnalyticsViewlet as BaseAnalyticsViewlet
-
 from collective.analyticspanel.interfaces import IAnalyticsSettingsSchema
 
+
 class AnalyticsViewlet(BaseAnalyticsViewlet):
+    """Base class for Analytics. As Plone default it will put analytics in the footer"""
+    
+    position = 'footer'
     
     def cleanup_path(self, path):
         """Given a path, cleanup trailing slashes and add to it portal's path"""
@@ -27,6 +29,8 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
         return path
     
     def render(self):
+        # A lot of getattr here to prevent errors when upgrading to 0.4 version
+        # before running upgrade step
         registry = queryUtility(IRegistry)
         settings = registry.forInterface(IAnalyticsSettingsSchema, check=False)
         
@@ -40,14 +44,18 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
         # 1 - error code take precedence
         if error_type and settings.error_specific_code:
             for possible_error in settings.error_specific_code:
-                message = possible_error.message 
-                if message==error_type:
+                message = possible_error.message
+                position = getattr(possible_error, 'position', 'footer')
+                if message==error_type and position==self.position:
                     return safe_unicode(possible_error.message_snippet)
 
         # 2 - path specific snippet
         if settings.path_specific_code:
             best_path = best_code = ''
             for possible_path in settings.path_specific_code:
+                position = getattr(possible_path, 'position', 'footer')
+                if position!=self.position:
+                    continue
                 path = self.cleanup_path(possible_path.path)
                 # Apply to whole subtree?
                 if getattr(possible_path, 'apply_to', '') == u'subtree':
@@ -63,4 +71,12 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
                         return safe_unicode(possible_path.path_snippet)
             if best_path:
                 return safe_unicode(best_code)
-        return safe_unicode(settings.general_code)
+        if self.position=='footer':
+            return safe_unicode(settings.general_code)
+        return safe_unicode(getattr(settings, 'general_header_code', ''))
+
+
+class HeaderAnalyticsViewlet(AnalyticsViewlet):
+    
+    position = 'header'
+

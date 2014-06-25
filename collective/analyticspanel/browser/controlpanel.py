@@ -58,6 +58,7 @@ class AnalyticsSettingsEditForm(controlpanel.RegistryEditForm):
     def updateWidgets(self):
         super(AnalyticsSettingsEditForm, self).updateWidgets()
         fix_widget_style(self.widgets['general_code'])
+        fix_widget_style(self.widgets['general_header_code'])
         for main_widget in self.widgets['error_specific_code'].widgets:
             error_widgets = main_widget.subform.widgets
             fix_widget_style(error_widgets['message_snippet'])

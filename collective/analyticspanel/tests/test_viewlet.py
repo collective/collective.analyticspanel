@@ -18,8 +18,10 @@ class TestViewlet(BaseTestCase):
         request = self.layer['request']
         self.markRequestWithLayer()
         request.set('ACTUAL_URL', 'http://nohost/plone')
-        self.getSettings().general_code = u'SITE ANALYTICS'
-        self.assertTrue('SITE ANALYTICS' in portal())
+        self.getSettings().general_code = u'SITE ANALYTICS FOOTER'
+        self.getSettings().general_header_code = u'SITE ANALYTICS HEADER'
+        self.assertTrue('SITE ANALYTICS FOOTER' in portal())
+        self.assertTrue('SITE ANALYTICS HEADER' in portal())
 
 # Do not run this test until p.a.testing will not fix https://dev.plone.org/ticket/11673
 #    def test_back_base_viewlet(self):
@@ -36,12 +38,19 @@ class TestViewlet(BaseTestCase):
 
         record = ErrorCodeValuePair()
         record.message = 'NotFound'
-        record.message_snippet = u'You are in a NotFound page'
-
+        record.message_snippet = u'You are in a NotFound page (footer)'
         settings.error_specific_code += (record,)
+
+        record = ErrorCodeValuePair()
+        record.message = 'NotFound'
+        record.message_snippet = u'You are in a NotFound page (header)'
+        record.position = 'header'
+        settings.error_specific_code += (record,)
+
         request.set('error_type', 'NotFound')
         view = getMultiAdapter((portal, request), name=u"sharing")
-        self.assertTrue('You are in a NotFound page' in view())
+        self.assertTrue('You are in a NotFound page (footer)' in view())
+        self.assertTrue('You are in a NotFound page (header)' in view())
 
     def test_for_path(self):
         portal = self.layer['portal']
@@ -53,11 +62,19 @@ class TestViewlet(BaseTestCase):
 
         record = SitePathValuePair()
         record.path = u'/news'
-        record.path_snippet = u'You are in the News section'
+        record.path_snippet = u'You are in the News section (footer)'
         record.apply_to = u'subtree'
         settings.path_specific_code += (record,)
 
-        self.assertTrue('You are in the News section' in portal.news())
+        record = SitePathValuePair()
+        record.path = u'/news'
+        record.path_snippet = u'You are in the News section (header)'
+        record.apply_to = u'subtree'
+        record.position = u'header'
+        settings.path_specific_code += (record,)
+
+        self.assertTrue('You are in the News section (footer)' in portal.news())
+        self.assertTrue('You are in the News section (header)' in portal.news())
         request.set('ACTUAL_URL', 'http://nohost/plone')
         self.assertFalse('You are in the News section' in portal())
 
@@ -73,16 +90,22 @@ class TestViewlet(BaseTestCase):
 
         record1 = SitePathValuePair()
         record1.path = u'/news'
-        record1.path_snippet = u'You are in the News section'
+        record1.path_snippet = u'You are in the News section (footer)'
         record1.apply_to = u'subtree'
         record2 = SitePathValuePair()
         record2.path = u'/news/subnews'
-        record2.path_snippet = u'You are in the Subnews section'
+        record2.path_snippet = u'You are in the Subnews section (footer)'
         record2.apply_to = u'subtree'
-        settings.path_specific_code += (record1, record2)
+        record3 = SitePathValuePair()
+        record3.path = u'/news'
+        record3.path_snippet = u'You are in the News section (header)'
+        record3.apply_to = u'subtree'
+        record3.position = u'header'
+        settings.path_specific_code += (record1, record2, record3)
 
         request.set('ACTUAL_URL', 'http://nohost/plone/news')
-        self.assertTrue('You are in the Subnews section' in portal.news.subnews())
+        self.assertTrue('You are in the Subnews section (footer)' in portal.news.subnews())
+        self.assertTrue('You are in the News section (header)' in portal.news.subnews())
 
     def test_hiding_code(self):
         portal = self.layer['portal']
@@ -92,16 +115,25 @@ class TestViewlet(BaseTestCase):
         request.set('ACTUAL_URL', 'http://nohost/plone/news')
         self.markRequestWithLayer()
         settings = self.getSettings()
+        settings.general_header_code = u'DEFAULT ANALYTICS IN HEADER'
 
         self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news())
+        self.assertTrue('DEFAULT ANALYTICS IN HEADER' in portal.news())
 
         record = SitePathValuePair()
         record.path = u'/news'
         record.path_snippet = u''
         record.apply_to = u'subtree'
         settings.path_specific_code += (record,)
+        record = SitePathValuePair()
+        record.path = u'/news'
+        record.path_snippet = u''
+        record.apply_to = u'subtree'
+        record.position = 'header'
+        settings.path_specific_code += (record,)
 
         self.assertFalse('SITE DEFAULT ANALYTICS' in portal.news())
+        self.assertFalse('DEFAULT ANALYTICS IN HEADER' in portal.news())
 
     def test_no_subtree_propagation(self):
         portal = self.layer['portal']
@@ -111,26 +143,37 @@ class TestViewlet(BaseTestCase):
         request.set('ACTUAL_URL', 'http://nohost/plone/news')
         self.markRequestWithLayer()
         settings = self.getSettings()
+        settings.general_header_code = u'DEFAULT ANALYTICS IN HEADER'
 
         self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news())
+        self.assertTrue('DEFAULT ANALYTICS IN HEADER' in portal.news())
 
         record = SitePathValuePair()
         record.path = u'/news'
-        record.path_snippet = u'Only for news'
+        record.path_snippet = u'Only for news (footer)'
         record.apply_to = u'context'
         settings.path_specific_code += (record,)
+        record = SitePathValuePair()
+        record.path = u'/news'
+        record.path_snippet = u'Only for news (header)'
+        record.apply_to = u'context'
+        record.position = u'header'
+        settings.path_specific_code += (record,)
 
-        self.assertTrue('Only for news' in portal.news())
+        self.assertTrue('Only for news (footer)' in portal.news())
+        self.assertTrue('Only for news (header)' in portal.news())
         
         portal.news.invokeFactory(type_name='Folder', id='subnews', title="Subnews")
         request.set('ACTUAL_URL', 'http://nohost/plone/news/subnews')
 
         self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news.subnews())
+        self.assertTrue('DEFAULT ANALYTICS IN HEADER' in portal.news.subnews())
 
     def test_apply_to_folder_and_children(self):
         request = self.layer['request']
         self.markRequestWithLayer()
         settings = self.getSettings()
+        settings.general_header_code = u'DEFAULT ANALYTICS IN HEADER'
 
         portal = self.layer['portal']
         portal.invokeFactory(type_name='Folder', id='news', title="News")
@@ -140,21 +183,31 @@ class TestViewlet(BaseTestCase):
 
         record = SitePathValuePair()
         record.path = u'/news'
-        record.path_snippet = u'For news and children'
+        record.path_snippet = u'For news and children (footer)'
         record.apply_to = u'context_and_children'
+        settings.path_specific_code += (record,)
+        record = SitePathValuePair()
+        record.path = u'/news'
+        record.path_snippet = u'For news and children (header)'
+        record.apply_to = u'context_and_children'
+        record.position = u'header'
         settings.path_specific_code += (record,)
 
         request.set('ACTUAL_URL', 'http://nohost/plone/news')
-        self.assertTrue('For news and children' in portal.news())
+        self.assertTrue('For news and children (footer)' in portal.news())
+        self.assertTrue('For news and children (header)' in portal.news())
         request.set('ACTUAL_URL', 'http://nohost/plone/news/home')
-        self.assertTrue('For news and children' in portal.news.home())
+        self.assertTrue('For news and children (footer)' in portal.news.home())
+        self.assertTrue('For news and children (header)' in portal.news.home())
         request.set('ACTUAL_URL', 'http://nohost/plone/news/subnews')
         self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news.subnews())
+        self.assertTrue('DEFAULT ANALYTICS IN HEADER' in portal.news.subnews())
 
     def test_apply_to_folder_and_children_with_new_folderish(self):
         request = self.layer['request']
         self.markRequestWithLayer()
         settings = self.getSettings()
+        settings.general_header_code = u'DEFAULT ANALYTICS IN HEADER'
 
         portal = self.layer['portal']
         portal.invokeFactory(type_name='Folder', id='news', title="News")
@@ -164,17 +217,27 @@ class TestViewlet(BaseTestCase):
 
         record = SitePathValuePair()
         record.path = u'/news'
-        record.path_snippet = u'For news and children'
+        record.path_snippet = u'For news and children (footer)'
         record.apply_to = u'context_and_children'
+        settings.path_specific_code += (record,)
+        settings.folderish_types = (u'Folder', u'News Item')
+        record = SitePathValuePair()
+        record.path = u'/news'
+        record.path_snippet = u'For news and children (header)'
+        record.apply_to = u'context_and_children'
+        record.position = u'header'
         settings.path_specific_code += (record,)
         settings.folderish_types = (u'Folder', u'News Item')
 
         request.set('ACTUAL_URL', 'http://nohost/plone/news')
-        self.assertTrue('For news and children' in portal.news())
+        self.assertTrue('For news and children (footer)' in portal.news())
+        self.assertTrue('For news and children (header)' in portal.news())
         request.set('ACTUAL_URL', 'http://nohost/plone/news/home')
-        self.assertTrue('For news and children' in portal.news.home())
+        self.assertTrue('For news and children (footer)' in portal.news.home())
+        self.assertTrue('For news and children (header)' in portal.news.home())
         request.set('ACTUAL_URL', 'http://nohost/plone/news/real_news')
         self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news.real_news())
+        self.assertTrue('DEFAULT ANALYTICS IN HEADER' in portal.news.real_news())
 
 
 class TestViewletPathCleanup(BaseTestCase):

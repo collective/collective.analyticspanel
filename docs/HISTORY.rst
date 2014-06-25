@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.3.1 (unreleased)
+0.4.0 (unreleased)
 ------------------
 
 - Fix bug that prevented viewlet from being shown on plone sites
@@ -9,8 +9,11 @@ Changelog
   when ZODB mountpoints are used. [fRiSi]
 - Fixed a bug that randomly hit the installation (See `#2`__) [keul]
 - Fixed translations not shown in vocabulary [keul]
+- You can now choose to put analytics in the before or after the `body` tag.
+  This close ´#1`__
 
 __ https://github.com/RedTurtle/collective.analyticspanel/issues/2
+__ https://github.com/RedTurtle/collective.analyticspanel/issues/1
 
 0.3.0 (2012-08-28)
 ------------------

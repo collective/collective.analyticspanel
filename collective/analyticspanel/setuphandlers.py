@@ -2,15 +2,14 @@
 
 from zope.component import queryUtility
 from Products.CMFCore.utils import getToolByName
-
 from plone.registry.interfaces import IRegistry
 from Products.CMFPlone.utils import safe_unicode
-
 from collective.analyticspanel import logger
-
 from collective.analyticspanel.interfaces import IAnalyticsSettings, IAnalyticsSettingsSchema
+from collective.analyticspanel.pair_fields import ErrorCodeValuePair, SitePathValuePair
 
 PROFILE_ID = 'profile-collective.analyticspanel:default'
+
 
 def setupVarious(context):
     if context.readDataFile('collective.analyticspanel_various.txt') is None:
@@ -69,3 +68,35 @@ def migrateTo1020(context):
     setup_tool.runAllImportStepsFromProfile('profile-collective.analyticspanel:registry_cleanup')
     logger.info('Registry cleanup operation performed')
     logger.info('Migrated to version 0.3')
+
+
+def migrateTo1100(context):
+    setup_tool = getToolByName(context, 'portal_setup')
+    registry = queryUtility(IRegistry)
+    settings = registry.forInterface(IAnalyticsSettingsSchema, check=False)
+    # 1. saving old data
+    # 1.1. adding position field to errors analytics
+    logger.info('Registering position support to error snippets')
+    new_error_snippets = []
+    for error_snippet in settings.error_specific_code:
+        migrated = ErrorCodeValuePair(error_snippet.message, error_snippet.message_snippet, 'footer')
+        new_error_snippets.append(migrated)
+        logger.info('...done')
+    # 1.2. adding position field to path analytics
+    logger.info('Registering position support to path snippets')
+    new_path_snippets = []
+    for path_snippet in settings.path_specific_code:
+        migrated = SitePathValuePair(path_snippet.path, path_snippet.path_snippet,
+                                     path_snippet.apply_to, 'footer')
+        new_path_snippets.append(migrated)
+        logger.info('...done')
+    # 1.3. Nullify fields
+    logger.info('Cleaning old registrations')
+    settings.error_specific_code = tuple()
+    settings.path_specific_code = tuple()
+    # 2. registering new data
+    logger.info('Import new migrated data')
+    setup_tool.runImportStepFromProfile(PROFILE_ID, 'plone.app.registry')
+    settings.error_specific_code = tuple(new_error_snippets)
+    settings.path_specific_code = tuple(new_path_snippets)
+    logger.info('Migrated to version 0.4')

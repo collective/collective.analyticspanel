@@ -28,10 +28,28 @@ class IAnalyticsSettings(Interface):
     """Settings used in the control panel for analyticspanel: general panel
     """
     
+    general_header_code = schema.Text(
+            title=_('general_header_code_label',
+                    default=u"JavaScript for web statistics support (in the header of the page)"),
+            description=_('general_header_code_desciption',
+                          default=u"For enabling web statistics support from external providers (for e.g. Google Analytics). "
+                                  u"Paste the code snippets provided. "
+                                  u"It will be included in the rendered HTML as entered near the beginning of the page's BODY.\n"
+                                  u"Commonly this is the best place where to put modern analytics code."),
+            default=u"",
+            missing_value=u"",
+            required=False,
+    )
+
     general_code = schema.Text(
-            title=pmf(u"JavaScript for web statistics support"),
-            description=pmf(u"For enabling web statistics support from external providers (for e.g. Google Analytics). "
-                            u"Paste the code snippets provided. It will be included in the rendered HTML as entered near the end of the page."),
+            title=_('general_footer_code_label',
+                    default=u"JavaScript for web statistics support (in the footer of the page)"),
+            description=_('general_footer_code_desciption',
+                          u"For enabling web statistics support from external providers (for e.g. Google Analytics). "
+                          u"Paste the code snippets provided.\n"
+                          u"It will be included in the rendered HTML as entered near the end of the page.\n"
+                          u"Historically Plone put it's analytics code here and this can still be the best place for "
+                          u"old analytics software that block the page rendering."),
             default=u"",
             missing_value=u"",
             required=False,
