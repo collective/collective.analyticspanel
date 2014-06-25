@@ -1,15 +1,18 @@
+This product will replace the basic Plone feature for **adding analytics JavaScript to your site**
+with an advanced version.
+
 .. contents:: **Table of contents**
 
 Introduction
 ============
 
-This product will replace the basic Plone feature for **adding statistical and analytics JavaScript to your site**
-with an advanced version that:
+New features added:
 
 * add possibility to add specific JavaScript when the user is **inside error page**
   (useful for special code when on the "*Page not found*")
 * add possibility to **customize code for a site area** or a single content
 * not display JavaScript code for specific area of the site
+* choose to put you snippets in the page header or footer)
 
 How to use it
 =============
@@ -21,28 +24,29 @@ new options are now available.
 JavaScript for web statistics support 
 -------------------------------------
 
-.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-01.png
+.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.4.0-01.png
    :alt: Basic feature
 
 Nothing new there: this is simply the basic Plone feature about JavaScript inclusion, just moved in this
-separate panel. This is always the default code included when other options don't match.
+separate panel (and you can put it in the header of the page).
+This is always the default code included when other options don't match.
 
 JavaScript to be included when an error message is get 
 ------------------------------------------------------
 
-.. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-02.png
+.. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.4.0-02.png
    :alt: Code for error page
 
 When this product is installed you can control JavaScript code based on error messages (ignoring the default one).
 The main motivation is to use this for the ``NotFound`` (HTTP 404) error.
 
 However this feature is still generic... you could probably use it for other error code (like ``ValueError``)
-if this make sense for you!
+if this make any sense for you!
 
 JavaScript to be included inside specific site's paths 
 ------------------------------------------------------
 
-.. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.3.0-03.png
+.. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.4.0-03.png
    :alt: Code for specific site's path
 
 You can use this section for putting a list of absolute site subsection you want to control, adding a specific
@@ -83,6 +87,18 @@ one for the rest of the site.
 
 Just configure options with empty code!
 
+JavaScript in the header or footer of the page?
+===============================================
+
+Historically Plone put analytics code in the page footer; this is an old way to go and modern analytics
+software suggest to put you code before the ``body`` tag.
+However old analytics software that can block the page rendering are better to be kept at the end of the page.
+
+For this reason this product will let you add analytics on both header or footer of the page at your choice.
+
+As you seen this option is available everywhere, for every feature added, just note that analytics in the header
+or footer are treat separately.
+
 Dependencies
 ============
 
@@ -90,6 +106,7 @@ This product has been tested on:
 
 * Plone 3.3 (read below)
 * Plone 4.2
+* Plone 4.3
 
 It's based on `plone.app.registry`__ that it not part of Plone on 3.3 version. You need to be sure that a compatible
 version is used (in my experience: use `plone.app.registry 1.0b1`__ and `plone.registry 1.0`__).
