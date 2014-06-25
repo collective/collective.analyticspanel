@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.3.1.dev0'
+version = '0.4.0.dev0'
 
 tests_require = ['plone.app.testing']
 
@@ -9,7 +9,7 @@ setup(name='collective.analyticspanel',
       version=version,
       description="Add more control over the inclusion of JavaScript analytics code of your Plone site",
       long_description=open("README.rst").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+                       open(os.path.join("docs", "HISTORY.rst")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
