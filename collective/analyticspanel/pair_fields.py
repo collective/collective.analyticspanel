@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from collective.analyticspanel import messageFactory as _
+from plone.registry.field import PersistentField
+from z3c.form.object import registerFactoryAdapter
 from zope import schema
 from zope.interface import Interface, implements
-from z3c.form.object import registerFactoryAdapter
-from plone.registry.field import PersistentField
-from collective.analyticspanel import messageFactory as _
 
 
 class IErrorCodeValuePair(Interface):

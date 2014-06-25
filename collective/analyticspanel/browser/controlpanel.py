@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 
 #from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
 from Products.statusmessages.interfaces import IStatusMessage
-
-from plone.app.registry.browser import controlpanel
-
-from z3c.form import button
-from z3c.form import group
-from z3c.form import field
-
-from collective.analyticspanel.interfaces import IAnalyticsSettingsSchema
-from collective.analyticspanel.interfaces import IAnalyticsSettings, IAnalyticsAdvancedSettings
 from collective.analyticspanel import messageFactory as _
+from collective.analyticspanel.interfaces import IAnalyticsSettings, IAnalyticsAdvancedSettings
+from collective.analyticspanel.interfaces import IAnalyticsSettingsSchema
+from plone.app.registry.browser import controlpanel
+from z3c.form import button
+from z3c.form import field
+from z3c.form import group
+
 
 def fix_widget_style(widget):
     widget.style = u'width: 100%';

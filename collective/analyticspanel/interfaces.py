@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import sys
-
-from zope.interface import Interface
-from zope import schema
-
-from Products.CMFPlone import PloneMessageFactory as pmf
-
 from collective.analyticspanel import messageFactory as _
 from collective.analyticspanel.pair_fields import IErrorCodeValuePair, ISitePathValuePair
 from collective.analyticspanel.pair_fields import PersistentObject
+from zope import schema
+from zope.interface import Interface
 
 # This is awful, but plone.app.vocabularies version used on Plone 3 has a bug that will never be fixed
 # See http://plone.293351.n2.nabble.com/Can-t-load-plone-app-vocabularies-ReallyUserFriendlyTypes-td7558326.html
