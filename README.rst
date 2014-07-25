@@ -24,7 +24,7 @@ new options are now available.
 JavaScript for web statistics support 
 -------------------------------------
 
-.. image:: https://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.4.0-01.png
+.. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.4.0-01.png
    :alt: Basic feature
 
 Nothing new there: this is simply the basic Plone feature about JavaScript inclusion, just moved in this
