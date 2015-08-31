@@ -4,8 +4,8 @@ Changelog
 0.5.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Added options to block analytics for user's privacy choices
+  [keul]
 
 0.4.0 (2014-06-25)
 ------------------

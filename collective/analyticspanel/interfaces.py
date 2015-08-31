@@ -85,7 +85,7 @@ class IAnalyticsSettings(Interface):
     )
 
     respect_optout = schema.Bool(
-            title=_(u'Respect analytics-optout cookie'),
+            title=_(u'Respect \"analytics-optout\" cookie'),
             description=_('help_respect_optout',
                           default=u"If a cookie named \"analytics-optout\" exists and is valued \"true\" "
                                   u"do not send analytics data."),

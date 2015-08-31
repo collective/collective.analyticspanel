@@ -99,6 +99,25 @@ For this reason this product will let you add analytics on both header or footer
 As you seen this option is available everywhere, for every feature added, just note that analytics in the header
 or footer are treat separately.
 
+Privacy
+=======
+
+EU has been recently hit by the `Cookie Law`__ 	phenomenon.
+This add-on provide now a couple of privacy settings you can enable if *you* think that analytics in your site
+could harm privacy of your users.
+
+* The `Do Not Track`__ option is about a client side feature added on some modern browser.
+* The usare of a ``analytics-optout`` cookie is something different.
+  The scope of this add-on is to react to the presence (and value) of this cookie, but is task of 3rd party add-on
+  (or software outside Plone) to generate this cookie.
+
+__ http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32009L0136
+__ https://en.wikipedia.org/wiki/Do_Not_Track
+
+**Please note** that the best way to conditionally load analytics code based on cookie presence is to perform it
+*client side*.
+Server side check commonly require integration with reverse-proxy in front of Plone (if any).
+
 Dependencies
 ============
 
