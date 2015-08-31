@@ -239,6 +239,16 @@ class TestViewlet(BaseTestCase):
         self.assertTrue('SITE DEFAULT ANALYTICS' in portal.news.real_news())
         self.assertTrue('DEFAULT ANALYTICS IN HEADER' in portal.news.real_news())
 
+    def test_optout(self):
+        request = self.layer['request']
+        portal = self.layer['portal']
+        self.markRequestWithLayer()
+        settings = self.getSettings()
+        settings.general_header_code = u'DEFAULT ANALYTICS IN HEADER'
+        settings.respect_optout = True
+        request.cookies = {'analytics-optout': 'true'}
+        self.assertFalse('DEFAULT ANALYTICS IN HEADER' in portal())
+
 
 class TestViewletPathCleanup(BaseTestCase):
     

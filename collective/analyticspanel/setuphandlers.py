@@ -41,6 +41,7 @@ def migrateTo1001(context):
             logger.info('Added new boolean property "apply_to_subsection" to %s' % safe_unicode(path_config.path))
     logger.info('Migrated to version 0.2')
 
+
 def migrateTo1020(context):
     setup_tool = getToolByName(context, 'portal_setup')
     setup_tool.runImportStepFromProfile(PROFILE_ID, 'plone.app.registry')
@@ -100,3 +101,9 @@ def migrateTo1100(context):
     settings.error_specific_code = tuple(new_error_snippets)
     settings.path_specific_code = tuple(new_path_snippets)
     logger.info('Migrated to version 0.4')
+
+
+def migrateTo1200(context):
+    setup_tool = getToolByName(context, 'portal_setup')
+    setup_tool.runImportStepFromProfile(PROFILE_ID, 'plone.app.registry')
+    logger.info('Migrated to version 0.5')

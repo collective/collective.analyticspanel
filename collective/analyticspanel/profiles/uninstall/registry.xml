@@ -1,17 +1,23 @@
 <registry>
     <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
-	        field="general_header_code"
+            field="general_header_code"
             delete="True"/>
     <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
-	        field="general_code"
+            field="general_code"
             delete="True"/>
     <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
-	        field="error_specific_code"
+            field="error_specific_code"
             delete="True"/>
     <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
-	        field="path_specific_code"
+            field="path_specific_code"
             delete="True"/>
     <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
-	        field="folderish_types"
+            field="respect_donottrack"
+            delete="True"/>
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
+            field="respect_optout"
+            delete="True"/>
+    <record interface="collective.analyticspanel.interfaces.IAnalyticsSettingsSchema"
+            field="folderish_types"
             delete="True"/>
 </registry>

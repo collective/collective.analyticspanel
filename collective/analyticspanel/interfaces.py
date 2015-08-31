@@ -76,6 +76,22 @@ class IAnalyticsSettings(Interface):
             missing_value=(),
     )
 
+    respect_donottrack = schema.Bool(
+            title=_(u'Respect "Do Not Track" browser setting'),
+            description=_('help_respect_donottrack',
+                          default=u"Do not send analytics if user activated the DNT header.\n"
+                                  u"See https://en.wikipedia.org/wiki/Do_Not_Track"),
+            default=False,
+    )
+
+    respect_optout = schema.Bool(
+            title=_(u'Respect analytics-optout cookie'),
+            description=_('help_respect_optout',
+                          default=u"If a cookie named \"analytics-optout\" exists and is valued \"true\" "
+                                  u"do not send analytics data."),
+            default=False,
+    )
+
 
 class IAnalyticsAdvancedSettings(Interface):
     """Settings used in the control panel for analyticspanel: advanced panel
