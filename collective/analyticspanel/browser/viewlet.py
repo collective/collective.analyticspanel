@@ -34,11 +34,13 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
         registry = queryUtility(IRegistry)
         settings = registry.forInterface(IAnalyticsSettingsSchema, check=False)
         
-        # privacy
-        if getattr(settings, 'respect_donottrack', None) and self.request.get_header('HTTP_DNT') == '1':
-            return ''
-        if getattr(settings, 'respect_optout', None) and self.request.cookies.get('analytics-optout', None) == 'true':
-            return ''
+        # *** Privacy ***
+        # If analytics-optout is false we should ignore also the DNT header. If not...
+        if getattr(settings, 'respect_optout', None) and self.request.cookies.get('analytics-optout', None) != 'false':
+            if getattr(settings, 'respect_donottrack', None) and self.request.get_header('HTTP_DNT') == '1':
+                return ''
+            if getattr(settings, 'respect_optout', None) and self.request.cookies.get('analytics-optout', None) == 'true':
+                return ''
 
         error_type = self.request.get('error_type', None)
 
