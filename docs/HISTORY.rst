@@ -6,6 +6,8 @@ Changelog
 
 - Added options to block analytics for user's privacy choices
   [keul]
+- Don't show analytics in views used on overlays (so with ajax_load paramiter)
+  [cekk]
 
 0.4.0 (2014-06-25)
 ------------------
@@ -35,7 +37,7 @@ __ https://github.com/RedTurtle/collective.analyticspanel/issues/1
 - Added new option: ``apply_to_subsection``
 - Added the "*autoresize*" CSS class for textareas
   (in the case you also use `collective.autoresizetextarea`__)
-  [keul] 
+  [keul]
 
 __ http://pypi.python.org/pypi/collective.autoresizetextarea/
 

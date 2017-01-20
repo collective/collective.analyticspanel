@@ -9,9 +9,9 @@ from collective.analyticspanel.interfaces import IAnalyticsSettingsSchema
 
 class AnalyticsViewlet(BaseAnalyticsViewlet):
     """Base class for Analytics. As Plone default it will put analytics in the footer"""
-    
+
     position = 'footer'
-    
+
     def cleanup_path(self, path):
         """Given a path, cleanup trailing slashes and add to it portal's path"""
         plone_tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
@@ -22,18 +22,21 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
 
         if not path.startswith(portal_path):
             path = portal_path + path
-        
+
         if path.endswith('/'):
             path = path[:-1]
-        
+
         return path
-    
+
     def render(self):
+        # Don't show analytics views called in overlays (so with ajax_load paramiter)
+        if self.request.get_header('X-Requested-With')=='XMLHttpRequest' or self.request.form.get('ajax_load'):
+            return ""
         # A lot of getattr here to prevent errors when upgrading to 0.4 version
         # before running upgrade step
         registry = queryUtility(IRegistry)
         settings = registry.forInterface(IAnalyticsSettingsSchema, check=False)
-        
+
         # *** Privacy ***
         # If analytics-optout is false we should ignore also the DNT header. If not...
         if getattr(settings, 'respect_optout', None) and self.request.cookies.get('analytics-optout', None) != 'false':
@@ -85,6 +88,5 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
 
 
 class HeaderAnalyticsViewlet(AnalyticsViewlet):
-    
-    position = 'header'
 
+    position = 'header'
