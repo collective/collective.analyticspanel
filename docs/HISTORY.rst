@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.5.0 (unreleased)
+0.5.0 (2017-01-20)
 ------------------
 
 - Added options to block analytics for user's privacy choices
