@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.statusmessages.interfaces import IStatusMessage
 from collective.analyticspanel import messageFactory as _
 from collective.analyticspanel.interfaces import IAnalyticsSettings, IAnalyticsAdvancedSettings

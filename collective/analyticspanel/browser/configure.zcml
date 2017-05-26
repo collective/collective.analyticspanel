@@ -18,6 +18,12 @@
         layer="..interfaces.IAnalyticsPanelLayer"
         />
 
+<!--
+TODO: hide webstats_js field (plone 4/5 compatible)
+
+zcml:condition="have plone-5"
+zcml:condition="have plone-4"
+
     <browser:page
         name="site-controlpanel"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -25,6 +31,7 @@
         permission="cmf.ManagePortal"
         layer="..interfaces.IAnalyticsPanelLayer"
         />
+-->
 
     <!-- Plone default footer viewlet -->
     <browser:viewlet

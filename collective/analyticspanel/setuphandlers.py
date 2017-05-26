@@ -25,7 +25,7 @@ def setupVarious(context):
         logger.info('Already found a local analytics code in my registry: no operation taken')
         return
 
-    plone_snippet = ptool.site_properties.webstats_js
+    plone_snippet = getattr(ptool.site_properties, 'webstats_js', None)
     
     if plone_snippet:
         logger.info('Found a general analytics code: copying it in my registry')
