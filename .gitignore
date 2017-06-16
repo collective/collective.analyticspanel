@@ -1,0 +1,13 @@
+*.pyc
+*.egg-info
+*.mo
+.installed.cfg
+.vscode/
+bin/
+develop-eggs/
+include/
+lib/
+local/
+parts/
+pip-selfcheck.json
+var/
