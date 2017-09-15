@@ -4,8 +4,8 @@ Changelog
 0.6.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix pypi classifiers
+  [cekk]
 
 0.6.0 (2017-09-15)
 ------------------
