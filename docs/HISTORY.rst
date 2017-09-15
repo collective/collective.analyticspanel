@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.6.0 (unreleased)
+0.6.0 (2017-09-15)
 ------------------
 
 - Plone 5 compatibility.
