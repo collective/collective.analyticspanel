@@ -12,6 +12,6 @@ before_install:
   - pip install -r https://raw.githubusercontent.com/plone/buildout.coredev/5.1/requirements.txt
 install:
   - sed -ie "s#plone-x.x.x.cfg#plone-$PLONE_VERSION.cfg#" travis.cfg
-  - bin/buildout -N -t 3 -c travis.cfg
+  - buildout -N -t 3 -c travis.cfg
 script:
   - bin/test
