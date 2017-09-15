@@ -9,6 +9,7 @@ from collective.analyticspanel.testing import ANALYTICS_PANEL_INTEGRATION_TESTIN
 
 from base import BaseTestCase
 
+
 class TestConfiguration(BaseTestCase):
 
     layer = ANALYTICS_PANEL_INTEGRATION_TESTING

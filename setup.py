@@ -3,7 +3,12 @@ import os
 
 version = '0.5.1.dev0'
 
-tests_require = ['plone.app.testing']
+tests_require = [
+    'plone.app.testing',
+    'plone.app.contenttypes',
+    'plone.app.robotframework[debug]',
+    'unittest2'
+    ]
 
 setup(name='collective.analyticspanel',
       version=version,
@@ -15,11 +20,11 @@ setup(name='collective.analyticspanel',
       classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Plone",
-        "Framework :: Plone :: 3.3",
         "Framework :: Plone :: 4.0",
         "Framework :: Plone :: 4.1",
         "Framework :: Plone :: 4.2",
         "Framework :: Plone :: 4.3",
+        "Framework :: Plone :: 5",
         "Programming Language :: Python",
         ],
       keywords='plone analytics plonegov',
@@ -37,6 +42,7 @@ setup(name='collective.analyticspanel',
           'setuptools',
           'plone.app.registry',
           'plone.app.vocabularies',
+          'plone.api'
       ],
       entry_points="""
       [z3c.autoinclude.plugin]

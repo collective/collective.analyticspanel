@@ -7,6 +7,12 @@ from Products.CMFPlone.utils import safe_unicode
 from collective.analyticspanel import logger
 from collective.analyticspanel.interfaces import IAnalyticsSettings, IAnalyticsSettingsSchema
 from collective.analyticspanel.pair_fields import ErrorCodeValuePair, SitePathValuePair
+from plone import api
+try:
+    from Products.CMFPlone.interfaces.controlpanel import ISiteSchema
+    PLONE_4 = False
+except ImportError:
+    PLONE_4 = True
 
 PROFILE_ID = 'profile-collective.analyticspanel:default'
 
@@ -16,8 +22,7 @@ def setupVarious(context):
         return
 
     portal = context.getSite()
-    
-    ptool = portal.portal_properties
+
     registry = queryUtility(IRegistry)
     settings = registry.forInterface(IAnalyticsSettingsSchema, check=False)
 
@@ -25,11 +30,20 @@ def setupVarious(context):
         logger.info('Already found a local analytics code in my registry: no operation taken')
         return
 
-    plone_snippet = getattr(ptool.site_properties, 'webstats_js', None)
-    
-    if plone_snippet:
+    old_js_config = getOldJsConfig(portal, registry)
+
+    if old_js_config:
         logger.info('Found a general analytics code: copying it in my registry')
-        settings.general_code = safe_unicode(ptool.site_properties.webstats_js)
+        settings.general_code = safe_unicode(old_js_config)
+
+
+def getOldJsConfig(portal, registry):
+    if PLONE_4:
+        ptool = portal.portal_properties
+        return getattr(ptool.site_properties, 'webstats_js', None)
+    else:
+        site = registry.forInterface(ISiteSchema, prefix="plone")
+        return site.webstats_js
 
 
 def migrateTo1001(context):

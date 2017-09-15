@@ -6,7 +6,10 @@ Changelog
 
 - Plone 5 compatibility.
   [cekk, mamico]
-
+- Drop plone 3 compatibility.
+  [cekk]
+- Fix tests and add travis config.
+  [cekk]
 
 0.5.0 (2017-01-20)
 ------------------
