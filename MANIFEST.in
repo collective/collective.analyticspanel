@@ -3,5 +3,6 @@ include *.cfg
 recursive-include docs *
 recursive-include collective *
 
+recursive-exclude parts/
 global-exclude *.pyc
 global-include *.mo
