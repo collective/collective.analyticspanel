@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 
-from zope.formlib.form import FormFields
-from plone.app.controlpanel.site import ISiteSchema
-from plone.app.controlpanel.site import SiteControlPanel as BaseSiteControlPanel
+from z3c.form.interfaces import HIDDEN_MODE
+from Products.CMFPlone.controlpanel.browser.site import SiteControlPanel as BaseSiteControlPanel  # noqa
+from Products.CMFPlone.controlpanel.browser.site import SiteControlPanelForm as BaseSiteControlPanelForm  # noqa
+
+
+class SiteControlPanelForm(BaseSiteControlPanelForm):
+
+    def updateWidgets(self):
+        super(SiteControlPanelForm, self).updateWidgets()
+        # Hide the basic webstats_js field
+        self.widgets['webstats_js'].mode = HIDDEN_MODE
 
 
 class SiteControlPanel(BaseSiteControlPanel):
     """
-    Hide the basic webstats_js field
     """
-
-    form_fields = FormFields(ISiteSchema).omit('webstats_js')
-
+    form = SiteControlPanelForm

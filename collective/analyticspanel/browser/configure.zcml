@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.analyticspanel">
 
     <browser:resourceDirectory
@@ -18,20 +19,24 @@
         layer="..interfaces.IAnalyticsPanelLayer"
         />
 
-<!--
-TODO: hide webstats_js field (plone 4/5 compatible)
+<!--hide webstats_js field (plone 4/5 compatible) -->
 
-zcml:condition="have plone-5"
-zcml:condition="have plone-4"
-
-    <browser:page
-        name="site-controlpanel"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".site.SiteControlPanel"
-        permission="cmf.ManagePortal"
-        layer="..interfaces.IAnalyticsPanelLayer"
-        />
--->
+  <browser:page
+      name="site-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".site_p4.SiteControlPanel"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IAnalyticsPanelLayer"
+      zcml:condition="not-have plone-5"
+      />
+  <browser:page
+      name="site-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".site.SiteControlPanel"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IAnalyticsPanelLayer"
+      zcml:condition="have plone-5"
+      />
 
     <!-- Plone default footer viewlet -->
     <browser:viewlet
