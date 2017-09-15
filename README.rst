@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/RedTurtle/collective.analyticspanel.svg?branch=master
+    :target: https://travis-ci.org/RedTurtle/collective.analyticspanel
+
 This product will replace the basic Plone feature for **adding analytics JavaScript to your site**
 with an advanced version.
 
@@ -21,7 +24,7 @@ When installed, the basic Plone feature for handling JavaScript for statistics i
 "*Site settings*" (in facts, it's moved to a new configuration panel called "*Analytics settings*") and
 new options are now available.
 
-JavaScript for web statistics support 
+JavaScript for web statistics support
 -------------------------------------
 
 .. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.4.0-01.png
@@ -31,7 +34,7 @@ Nothing new there: this is simply the basic Plone feature about JavaScript inclu
 separate panel (and you can put it in the header of the page).
 This is always the default code included when other options don't match.
 
-JavaScript to be included when an error message is get 
+JavaScript to be included when an error message is get
 ------------------------------------------------------
 
 .. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.4.0-02.png
@@ -43,7 +46,7 @@ The main motivation is to use this for the ``NotFound`` (HTTP 404) error.
 However this feature is still generic... you could probably use it for other error code (like ``ValueError``)
 if this make any sense for you!
 
-JavaScript to be included inside specific site's paths 
+JavaScript to be included inside specific site's paths
 ------------------------------------------------------
 
 .. image:: http://blog.redturtle.it/pypi-images/collective.analyticspanel/collective.analyticspanel-0.4.0-03.png
@@ -136,7 +139,7 @@ __ http://pypi.python.org/pypi/plone.registry/1.0
 
 Credits
 =======
-  
+
 Developed with the support of:
 
 * `Regione Emilia Romagna`__
