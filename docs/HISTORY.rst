@@ -4,7 +4,8 @@ Changelog
 0.6.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- added features for european GDPR
+  [florianweg]
 
 
 0.6.1 (2017-09-15)
