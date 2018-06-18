@@ -60,4 +60,11 @@
         layer="..interfaces.IAnalyticsPanelLayer"
         />
 
+    <browser:view
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        name="get-analytics-code"
+        class=".views.AnalyticspanelJsonView"
+        permission="zope2.View"
+        />
+
 </configure>

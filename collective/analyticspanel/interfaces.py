@@ -92,6 +92,14 @@ class IAnalyticsSettings(Interface):
             default=False,
     )
 
+    force_optin = schema.Bool(
+            title=_(u'Force \"analytics-optout\" cookie to be set'),
+            description=_('help_respect_optout',
+                          default=u"A cookie named \"analytics-optout\" is required and has to be valued \"false\" "
+                                  u"to send analytics data."),
+            default=False,
+    )
+
 
 class IAnalyticsAdvancedSettings(Interface):
     """Settings used in the control panel for analyticspanel: advanced panel
