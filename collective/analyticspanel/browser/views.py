@@ -28,16 +28,47 @@ class AnalyticspanelJsonView(BrowserView):
             output = ({"header": safe_unicode(getattr(settings, 'general_header_code', '')), "footer": safe_unicode(settings.general_code)})
 
             return json.dumps(output)
+
         except:
             return json.dumps(({}))
 
+    def render_plain(self, position):
+        """
+        :return: header or footer analytics code as plain object
+        """
+        try:
+            registry = queryUtility(IRegistry)
+            settings = registry.forInterface(IAnalyticsSettingsSchema, check=False)
+
+            if position == "header":
+                output = safe_unicode(getattr(settings, 'general_header_code', ''))
+            elif position == "footer":
+                output = safe_unicode(settings.general_code)
+
+            return output
+
+        except:
+            return ""
+
+
     def __call__(self):
-        """
-        Start rendering JSON
-        :return: the JSON result
-        """
 
-        # setup: header
-        self.request.response.setHeader('Content-Type', 'application/json; charset=utf-8')
+        try:
+            """
+            Start rendering Plain Text
+            :return: plain text code
+            """
+            # setup: header
+            self.request.response.setHeader('Content-Type', 'text/plain; charset=utf-8')
 
-        return self.render_json()
+            return self.render_plain(self.request.form["position"])
+
+        except KeyError:
+            """
+            Start rendering JSON
+            :return: the JSON result
+            """
+            # setup: header
+            self.request.response.setHeader('Content-Type', 'application/json; charset=utf-8')
+
+            return self.render_json()
