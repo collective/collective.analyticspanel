@@ -53,22 +53,29 @@ class AnalyticspanelJsonView(BrowserView):
 
     def __call__(self):
 
-        try:
-            """
-            Start rendering Plain Text
-            :return: plain text code
-            """
-            # setup: header
+        gaoptout = self.request.cookies.get("analytics-optout", "true")
+
+        # google analytics cookie has to be false - force optin option
+        if gaoptout == "false":
+            try:
+                """
+                Start rendering Plain Text
+                :return: plain text code
+                """
+                # setup: header
+                self.request.response.setHeader('Content-Type', 'text/plain; charset=utf-8')
+
+                return self.render_plain(self.request.form["position"])
+
+            except KeyError:
+                """
+                Start rendering JSON
+                :return: the JSON result
+                """
+                # setup: header
+                self.request.response.setHeader('Content-Type', 'application/json; charset=utf-8')
+
+                return self.render_json()
+        else:
             self.request.response.setHeader('Content-Type', 'text/plain; charset=utf-8')
-
-            return self.render_plain(self.request.form["position"])
-
-        except KeyError:
-            """
-            Start rendering JSON
-            :return: the JSON result
-            """
-            # setup: header
-            self.request.response.setHeader('Content-Type', 'application/json; charset=utf-8')
-
-            return self.render_json()
+            return ""
