@@ -126,7 +126,7 @@ def migrateTo2000(context):
     """
 
     def convert_persistent_data(data):
-        return data.__dict__
+        return data.__Broken_state__
 
     setup_tool = api.portal.get_tool(name='portal_setup')
     setup_tool.runAllImportStepsFromProfile(

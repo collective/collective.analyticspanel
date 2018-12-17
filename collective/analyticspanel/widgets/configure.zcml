@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="collective.analyticspanel"
+    >
+  <configure package="collective.z3cform.datagridfield">
+    <z3c:widgetTemplate
+        template="datagridfield_input_block.pt"
+        layer="collective.analyticspanel.interfaces.IAnalyticsPanelLayer"
+        mode="input"
+        widget="collective.analyticspanel.widgets.blockdatagridfield.BlockDataGridField"
+        />
+  </configure>
+</configure>
