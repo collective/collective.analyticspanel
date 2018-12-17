@@ -1,10 +1,11 @@
 Changelog
 =========
 
-0.6.2 (unreleased)
+1.0.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove custom persistent field from registry.
+  [cekk]
 
 
 0.6.1 (2017-09-15)

@@ -7,13 +7,16 @@ from plone.app.testing import PloneSandboxLayer
 from zope.component import queryUtility
 from plone.registry.interfaces import IRegistry
 from plone import api
+
 try:
     from Products.CMFPlone.interfaces.controlpanel import ISiteSchema
+
     PLONE_4 = False
 except ImportError:
     PLONE_4 = True
 
 import collective.analyticspanel
+import collective.z3cform.datagridfield
 
 
 class AnalyticsPanelLayer(PloneSandboxLayer):
@@ -21,11 +24,14 @@ class AnalyticsPanelLayer(PloneSandboxLayer):
     defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
+        self.loadZCML(package=collective.z3cform.datagridfield)
         self.loadZCML(package=collective.analyticspanel)
 
     def setUpPloneSite(self, portal):
         if PLONE_4:
-            portal.portal_properties.site_properties.webstats_js = 'SITE DEFAULT ANALYTICS'
+            portal.portal_properties.site_properties.webstats_js = (
+                'SITE DEFAULT ANALYTICS'
+            )
         else:
             registry = queryUtility(IRegistry)
             site = registry.forInterface(ISiteSchema, prefix="plone")
@@ -39,11 +45,11 @@ ANALYTICS_PANEL_FIXTURE = AnalyticsPanelLayer()
 
 ANALYTICS_PANEL_INTEGRATION_TESTING = IntegrationTesting(
     bases=(ANALYTICS_PANEL_FIXTURE,),
-    name='AnalyticsPanelLayer:IntegrationTesting'
+    name='AnalyticsPanelLayer:IntegrationTesting',
 )
 
 
 ANALYTICS_PANEL_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(ANALYTICS_PANEL_FIXTURE,),
-    name='AnalyticsPanelLayer:FunctionalTesting'
+    name='AnalyticsPanelLayer:FunctionalTesting',
 )

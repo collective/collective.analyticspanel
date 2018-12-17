@@ -44,6 +44,14 @@
         sortkey="3"
         profile="collective.analyticspanel:default"
     />
-
+   <genericsetup:upgradeStep
+        title="Upgrade to collective.analyticspanel 2000"
+        description="Migrates collective.analyticspanel to 2000"
+        source="1200"
+        destination="2000"
+        handler=".setuphandlers.migrateTo2000"
+        sortkey="4"
+        profile="collective.analyticspanel:default"
+    />
 
 </configure>
