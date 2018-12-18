@@ -141,10 +141,10 @@ def migrateTo2000(context):
         convert_persistent_data, settings.path_specific_code
     )
     # delete old records
-    registry.records[
+    del registry.records[
         'collective.analyticspanel.interfaces.IAnalyticsSettingsSchema.error_specific_code'  # noqa
     ]
-    registry.records[
+    del registry.records[
         'collective.analyticspanel.interfaces.IAnalyticsSettingsSchema.path_specific_code'  # noqa
     ]
     # re-import
