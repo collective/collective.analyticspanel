@@ -3,6 +3,7 @@
 *.egg-info
 *.mo
 .installed.cfg
+.mr.developer.cfg
 .vscode/
 bin/
 develop-eggs/
