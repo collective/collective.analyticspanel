@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.0 (unreleased)
+1.0.0 (2019-01-09)
 ------------------
 
 - Remove custom persistent field from registry.
