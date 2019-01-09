@@ -7,3 +7,4 @@ recursive-exclude parts *
 exclude .installed.cfg
 global-exclude *.pyc
 global-include *.mo
+exclude requirements.txt
