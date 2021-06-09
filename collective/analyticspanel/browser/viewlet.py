@@ -44,6 +44,11 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
             return ''
         if getattr(settings, 'force_optin', None) and self.request.cookies.get('analytics-optout', None) != 'false':
             return ''
+        
+        # ---- cookiebot addon ------
+        exclude_subdomains = ["dev", "design", "staging"]
+        if any(subdomain in self.request.base for subdomain in exclude_subdomains):
+            return '<!-- exclude cookiebot from dev/design/staging -->'
 
         error_type = self.request.get('error_type', None)
 
