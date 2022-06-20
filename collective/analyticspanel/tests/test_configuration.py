@@ -7,7 +7,7 @@ from plone.registry.interfaces import IRegistry
 from collective.analyticspanel.interfaces import IAnalyticsSettingsSchema
 from collective.analyticspanel.testing import ANALYTICS_PANEL_INTEGRATION_TESTING
 
-from base import BaseTestCase
+from .base import BaseTestCase
 
 
 class TestConfiguration(BaseTestCase):

@@ -9,7 +9,10 @@
   <five:registerPackage package="." />
   <i18n:registerTranslations directory="locales" />
 
-  <cmf:registerDirectory name="collective.analyticspanel"/>
+  <cmf:registerDirectory
+    name="skins"
+    directory="skins"
+    recursive="True"/>
 
   <include package="Products.CMFPlone" />
   <include package="plone.app.registry" />

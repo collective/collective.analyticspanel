@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from base import BaseTestCase
+from .base import BaseTestCase
+
 from collective.analyticspanel.browser.viewlet import AnalyticsViewlet
 from collective.analyticspanel.testing import (
     ANALYTICS_PANEL_INTEGRATION_TESTING,
