@@ -19,8 +19,7 @@
         layer="..interfaces.IAnalyticsPanelLayer"
         />
 
-<!--hide webstats_js field (plone 4/5 compatible) -->
-
+  <!--hide webstats_js field (plone 4/5 compatible) -->
   <browser:page
       name="site-controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -29,6 +28,7 @@
       layer="..interfaces.IAnalyticsPanelLayer"
       zcml:condition="not-have plone-5"
       />
+
   <browser:page
       name="site-controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -48,10 +48,10 @@
         />
 
     <!--
-	     Modern approach: analytics in the head
-		 Please note that IHtmlHeadLinks is not optimal, but Plone is not providing any
-		 viewlet manager at the very-end of HTML head
-	-->
+      Modern approach: analytics in the head
+      Please note that IHtmlHeadLinks is not optimal, but Plone is not providing any
+      viewlet manager at the very-end of HTML head
+    -->
     <browser:viewlet
         name="plone.analytics"
         manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"

@@ -6,11 +6,9 @@ cache:
     - eggs
     - downloads
 python:
-  - "2.7"
+  - "3.8"
 env:
-  - PLONE_VERSION=4.3.x
-  - PLONE_VERSION=5.0.x
-  - PLONE_VERSION=5.1.x
+  - PLONE_VERSION=5.2.x
 matrix:
   fast_finish: true
 install:
