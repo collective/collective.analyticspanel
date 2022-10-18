@@ -46,7 +46,7 @@ class AnalyticsViewlet(BaseAnalyticsViewlet):
             return ''
         
         # ---- cookiebot addon ------
-        exclude_subdomains = ["dev", "design", "staging"]
+        exclude_subdomains = ["dev", "staging"]
         if any(subdomain in self.request.base for subdomain in exclude_subdomains):
             return '<!-- exclude cookiebot from dev/design/staging -->'
 
