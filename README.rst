@@ -121,21 +121,13 @@ __ https://en.wikipedia.org/wiki/Do_Not_Track
 *client side*.
 Server side check commonly require integration with reverse-proxy in front of Plone (if any).
 
-Dependencies
-============
+Compatibility
+=============
 
-This product has been tested on:
+Plone >= 5.2 and Python3 from version 2.0.0.
 
-* Plone 3.3 (read below)
-* Plone 4.2
-* Plone 4.3
+For previous Plone versions, use < 2.0.0
 
-It's based on `plone.app.registry`__ that it not part of Plone on 3.3 version. You need to be sure that a compatible
-version is used (in my experience: use `plone.app.registry 1.0b1`__ and `plone.registry 1.0`__).
-
-__ http://pypi.python.org/pypi/plone.app.registry
-__ http://pypi.python.org/pypi/plone.app.registry/1.0b1
-__ http://pypi.python.org/pypi/plone.registry/1.0
 
 Credits
 =======
