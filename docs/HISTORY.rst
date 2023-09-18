@@ -4,7 +4,8 @@ Changelog
 2.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix logic in controlpanel save method.
+  [cekk]
 
 
 2.0.0 (2022-11-23)
